@@ -1221,11 +1221,25 @@ body {
     }
     
     .illusion-grid {
-        gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
     }
     
     .illusion-card {
-        padding: 25px;
+        padding: 20px;
+    }
+    
+    .illusion-card h3 {
+        font-size: 1rem;
+    }
+    
+    .illusion-card p {
+        font-size: 0.85rem;
+    }
+    
+    .illusion-icon {
+        font-size: 24px;
+        margin-bottom: 10px;
     }
     
     .features-grid {
