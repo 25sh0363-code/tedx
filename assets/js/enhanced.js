@@ -6,6 +6,7 @@
     // PRELOADER
     // ============================================
     const preloader = document.getElementById('preloader');
+    const isMobile = window.innerWidth <= 768;
     
     window.addEventListener('load', () => {
         setTimeout(() => {
@@ -13,9 +14,9 @@
                 preloader.classList.add('hidden');
                 setTimeout(() => {
                     preloader.style.display = 'none';
-                }, 800);
+                }, 400);
             }
-        }, 1500);
+        }, isMobile ? 800 : 1500);
     });
 
     // ============================================
@@ -83,27 +84,51 @@
         mobileToggle.classList.toggle('active');
     });
 
+    // Close mobile menu when clicking a link
+    const navLinksItems = document.querySelectorAll('.nav-links a');
+    navLinksItems.forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks?.classList.remove('active');
+            mobileToggle?.classList.remove('active');
+        });
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!navLinks?.contains(e.target) && !mobileToggle?.contains(e.target)) {
+            navLinks?.classList.remove('active');
+            mobileToggle?.classList.remove('active');
+        }
+    });
+
     // ============================================
     // REVEAL ANIMATIONS
     // ============================================
     const revealElements = document.querySelectorAll('.reveal');
     
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('revealed');
-                revealObserver.unobserve(entry.target);
-            }
+    // Skip animations on mobile for better performance
+    if (isMobile) {
+        revealElements.forEach(el => {
+            el.classList.add('revealed');
         });
-    }, {
-        threshold: 0.05,
-        rootMargin: '0px 0px -20px 0px'
-    });
+    } else {
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.05,
+            rootMargin: '0px 0px -20px 0px'
+        });
 
-    revealElements.forEach((el) => {
-        el.style.transitionDelay = '0s';
-        revealObserver.observe(el);
-    });
+        revealElements.forEach((el) => {
+            el.style.transitionDelay = '0s';
+            revealObserver.observe(el);
+        });
+    }
 
     // ============================================
     // COUNTER ANIMATION
