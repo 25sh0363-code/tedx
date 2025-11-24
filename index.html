@@ -1,667 +1,296 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>TEDx Silveroaks International School</title>
-
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEDx Silveroaks International School | Maya: Illusions in Daily Life</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        /* ===========================
-           BASE VARIABLES
-           (I did NOT change any sizes/min-widths from your file)
-           =========================== */
-        :root {
-            --primary: #e62e2e;
-            --primary-dark: #cc0000;
-            --secondary: #ffffff;
-            --dark: #000000;
-            --light: #1a1a1a;
-            --accent: #333333;
-            --text-light: #cccccc;
-            --gradient: linear-gradient(135deg, #e62e2e 0%, #cc0000 100%);
-            --glow-strong: 0 10px 60px rgba(230,46,46,0.20);
-            --glow-soft: 0 6px 30px rgba(230,46,46,0.12);
-            --glass-border: rgba(255,255,255,0.08);
-            --card-elev: 0 20px 50px rgba(0,0,0,0.6);
-            --ease: cubic-bezier(.2,.9,.3,1);
-        }
-
-        /* ===========================
-           RESET & BASE
-           =========================== */
-        *{margin:0;padding:0;box-sizing:border-box}
-        html{scroll-behavior:smooth}
-        body{
-            font-family:'Montserrat',sans-serif;
-            color:var(--secondary);
-            background-color:var(--dark);
-            line-height:1.7;
-            overflow-x:hidden;
-            font-weight:400;
-            -webkit-font-smoothing:antialiased;
-            -moz-osx-font-smoothing:grayscale;
-        }
-
-        h1,h2,h3,h4,h5,h6{font-family:'Montserrat',sans-serif;font-weight:700;line-height:1.3}
-
-        .container{width:90%;max-width:1200px;margin:0 auto;padding:0 15px}
-
-        /* ===========================
-           NAVIGATION (kept sizes identical; added glows/hover only)
-           =========================== */
-        header{
-            background-color: rgba(0,0,0,0.2);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            position: fixed;
-            width: auto;
-            min-width: 650px;      /* preserved */
-            top: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1000;
-            transition: all 0.4s var(--ease);
-            border-radius: 50px;
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-            padding: 0 30px;
-        }
-
-        header.scrolled{
-            background-color: rgba(0,0,0,0.45);
-            box-shadow: 0 14px 48px rgba(0,0,0,0.55), 0 0 80px rgba(0,0,0,0.15) inset;
-            top:20px;
-        }
-
-        .header-container{
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            padding:12px 0;
-            gap:40px;
-        }
-
-        .logo{display:flex;flex-direction:column;line-height:1.2;flex-shrink:0}
-        .logo-main{
-            font-family:'Montserrat',sans-serif;
-            font-size:24px;   /* preserved */
-            font-weight:800;
-            color:var(--primary);
-            letter-spacing:1px;
-            text-shadow: 0 6px 18px rgba(230,46,46,0.08);
-        }
-        .logo-sub{
-            font-size:9px;color:var(--secondary);font-weight:600;letter-spacing:2px;text-transform:uppercase;opacity:.85;
-        }
-
-        nav{flex:1;display:flex;justify-content:center}
-        nav ul{display:flex;list-style:none;gap:15px;margin:0;padding:0;justify-content:center;align-items:center}
-        nav ul li{margin:0}
-
-        /* keep padding/size same, add glow + animated underline */
-        nav ul li a{
-            text-decoration:none;
-            color:var(--secondary);
-            font-weight:500;
-            font-size:13px;
-            transition: all .28s var(--ease);
-            position:relative;
-            padding:12px 25px;   /* preserved */
-            text-transform:uppercase;
-            letter-spacing:1px;
-            border-radius:25px;
-            background: rgba(255,255,255,0.04);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border:1px solid rgba(255,255,255,0.06);
-            display:block;
-            white-space:nowrap;
-            text-align:center;
-            overflow:visible;
-        }
-
-        /* neon-ish underline */
-        nav ul li a::after{
-            content:'';
-            position:absolute;
-            left:12px;
-            right:12px;
-            bottom:8px;
-            height:2px;
-            border-radius:4px;
-            background:linear-gradient(90deg, rgba(230,46,46,0.0), rgba(230,46,46,0.85), rgba(230,46,46,0.0));
-            opacity:0;
-            transform:translateY(6px) scaleX(.95);
-            transition:all .28s var(--ease);
-        }
-
-        nav ul li a:hover{
-            color:var(--primary);
-            background: rgba(230,46,46,0.08);
-            border-color: rgba(230,46,46,0.28);
-            transform: translateY(-3px);
-            box-shadow: var(--glow-soft);
-        }
-
-        nav ul li a:hover::after{opacity:1;transform:translateY(0) scaleX(1)}
-        nav ul li a.active{
-            color:var(--primary);
-            background: rgba(230,46,46,0.14);
-            border-color: rgba(230,46,46,0.36);
-            box-shadow: var(--glow-strong);
-        }
-
-        /* keyboard focus */
-        nav ul li a:focus{outline:3px solid rgba(230,46,46,0.12);outline-offset:4px;box-shadow:var(--glow-soft)}
-
-        /* mobile menu removal preserved */
-        .mobile-menu{display:none !important}
-
-        /* ===========================
-           HERO (keep sizes, add subtle glow/shimmer)
-           =========================== */
-        .hero{
-            background:
-                linear-gradient(rgba(0,0,0,0.78), rgba(0,0,0,0.88)),
-                url('https://i.ibb.co/tphx86vQ/maya.jpg');
-            background-size:cover;
-            background-position:center;
-            background-repeat:no-repeat;
-            color:var(--secondary);
-            padding:200px 0 150px;   /* preserved */
-            text-align:center;
-            position:relative;
-            overflow:hidden;
-            min-height:100vh;
-            display:flex;
-            align-items:center;
-        }
-
-        .hero-content{max-width:900px;margin:0 auto;position:relative;z-index:2}
-
-        .hero h1{
-            font-size:3.5rem; /* preserved */
-            margin-bottom:20px;
-            letter-spacing:2px;
-            font-weight:800;
-            text-transform:uppercase;
-            text-shadow:0 6px 30px rgba(0,0,0,0.75), 0 0 18px rgba(230,46,46,0.06);
-            transition: text-shadow .35s var(--ease), transform .35s var(--ease);
-        }
-
-        /* small animated glow pulse on hero heading */
-        .hero h1.glow {
-            animation: heroGlow 3.6s ease-in-out infinite;
-        }
-        @keyframes heroGlow {
-            0%{text-shadow:0 6px 30px rgba(0,0,0,0.75), 0 0 6px rgba(230,46,46,0.03)}
-            50%{text-shadow:0 10px 60px rgba(0,0,0,0.75), 0 0 30px rgba(230,46,46,0.10)}
-            100%{text-shadow:0 6px 30px rgba(0,0,0,0.75), 0 0 6px rgba(230,46,46,0.03)}
-        }
-
-        .hero h2{font-size:1.8rem;margin-bottom:30px;font-weight:400;letter-spacing:1px;text-shadow:0 2px 8px rgba(0,0,0,0.7)}
-        .hero p{font-size:1.2rem;max-width:700px;margin:0 auto 50px;color:var(--text-light);font-weight:400;text-shadow:0 2px 5px rgba(0,0,0,0.7)}
-
-        /* Button glow + hover */
-        .btn{
-            display:inline-block;padding:15px 35px;background:var(--gradient);color:var(--secondary);text-decoration:none;border-radius:50px;font-weight:600;font-size:14px;transition:all .28s var(--ease);border:none;cursor:pointer;box-shadow:0 6px 26px rgba(230,46,46,0.22);letter-spacing:1px;text-transform:uppercase;font-family:'Montserrat',sans-serif;
-        }
-        .btn:focus{outline:4px solid rgba(230,46,46,0.10);outline-offset:4px}
-        .btn:hover{transform:translateY(-4px);box-shadow:var(--glow-strong);filter:brightness(1.03)}
-        .btn-outline{background:transparent;border:2px solid var(--primary);color:var(--secondary);margin-left:20px}
-        .btn-outline:hover{background:var(--primary);box-shadow:0 10px 30px rgba(204,0,0,0.18);color:#fff}
-
-        /* small light streak on hover (pseudo) */
-        .btn::after{
-            content:"";
-            position:absolute;
-            pointer-events:none;
-            left:-30%;
-            top:0;
-            height:100%;
-            width:30%;
-            background:linear-gradient(120deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-            transform:skewX(-18deg) translateX(-120%);
-            transition:transform .8s var(--ease);
-            border-radius:50%;
-        }
-        .btn:hover::after{transform:skewX(-18deg) translateX(300%)}
-
-        /* ===========================
-           MISSION (kept sizes, darker cards + glow border)
-           =========================== */
-        .mission{padding:120px 0;background-color:var(--light)}
-
-        .section-title{text-align:center;margin-bottom:80px}
-        .section-title h2{
-            font-size:2.5rem;color:var(--primary);margin-bottom:20px;position:relative;display:inline-block;font-weight:700;text-transform:uppercase;letter-spacing:2px;
-        }
-        .section-title h2::after{content:'';position:absolute;width:80px;height:4px;background-color:var(--primary);bottom:-15px;left:50%;transform:translateX(-50%)}
-
-        .section-title p{max-width:700px;margin:30px auto 0;font-size:1.1rem;color:var(--text-light);font-weight:400}
-
-        .mission-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;margin-top:60px}
-
-        .mission-card{
-            background-color: rgba(18,18,18,0.95); /* darker card */
-            border-radius:15px;padding:40px 30px;text-align:center;transition:all .32s var(--ease);border:1px solid var(--glass-border);position:relative;overflow:hidden;backdrop-filter: blur(8px);
-            box-shadow: var(--card-elev);
-        }
-
-        .mission-card::before{
-            content:'';position:absolute;top:0;left:0;width:100%;height:6px;background:linear-gradient(90deg, rgba(230,46,46,0.95), rgba(204,0,0,0.6));opacity:0.98;
-        }
-
-        /* subtle soft glow on hover */
-        .mission-card:hover{
-            transform:translateY(-10px);
-            box-shadow:0 30px 80px rgba(0,0,0,0.7), 0 0 40px rgba(230,46,46,0.06);
-            border-color: rgba(230,46,46,0.08);
-        }
-
-        .mission-icon{font-size:3rem;color:var(--primary);margin-bottom:25px;text-shadow:0 6px 18px rgba(230,46,46,0.06)}
-        .mission-card h3{font-size:1.5rem;margin-bottom:20px;color:var(--secondary);font-weight:700}
-        .mission-card p{color:var(--text-light);font-size:1.1rem;font-weight:400}
-
-        /* ===========================
-           ABOUT / TEDX / THEME / REGISTRATION
-           (kept layout sizes; only visual polish)
-           =========================== */
-        .about-ted{padding:120px 0;background-color:var(--dark)}
-        .about-content{display:flex;align-items:flex-start;gap:60px;margin-bottom:80px}
-        .about-text{flex:1}
-        .about-text h3{font-size:2rem;margin-bottom:25px;color:var(--primary);font-weight:700}
-        .about-text p{margin-bottom:25px;color:var(--text-light);font-size:1.1rem;font-weight:400}
-        .about-image{flex:1;border-radius:15px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,0.6);border:1px solid var(--accent)}
-        .about-image img{width:100%;height:auto;display:block;filter:contrast(1.04) brightness(0.94)}
-
-        .tedx-explanation{background-color:var(--light);padding:80px 0;text-align:center}
-        .tedx-box{background-color: rgba(18,18,18,0.95);border-radius:20px;padding:60px 40px;max-width:900px;margin:0 auto;border:1px solid var(--glass-border);box-shadow:0 20px 60px rgba(0,0,0,0.7);backdrop-filter: blur(6px)}
-        .tedx-box h3{font-size:2.5rem;margin-bottom:30px;color:var(--primary);font-weight:800}
-        .tedx-box p{font-size:1.2rem;color:var(--text-light);margin-bottom:30px}
-        .x-highlight{font-size:3rem;color:var(--primary);font-weight:800;display:block;margin:20px 0;text-shadow:0 8px 28px rgba(230,46,46,0.06)}
-
-        .theme{padding:120px 0;background-color:var(--light)}
-        .theme-content{display:flex;align-items:center;gap:60px}
-        .theme-text{flex:1}
-        .theme-text h3{font-size:2rem;margin-bottom:25px;color:var(--primary);font-weight:700}
-        .theme-text p{margin-bottom:25px;color:var(--text-light);font-size:1.1rem;font-weight:400}
-        .theme-text ul{margin-bottom:25px;padding-left:20px}
-        .theme-text ul li{margin-bottom:12px;color:var(--text-light);font-size:1.1rem;font-weight:400}
-        .theme-text ul li strong{color:var(--primary);font-weight:600}
-        .theme-image{flex:1;border-radius:15px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,0.6);border:1px solid var(--accent)}
-        .theme-image img{width:100%;height:auto;display:block;filter:contrast(1.02) brightness(0.96)}
-
-        .registration{padding:120px 0;background-color:var(--dark)}
-        .registration-content{display:flex;align-items:center;gap:60px}
-        .registration-text{flex:1}
-        .registration-text h3{font-size:2rem;margin-bottom:25px;color:var(--primary);font-weight:700}
-        .registration-text p{margin-bottom:25px;color:var(--text-light);font-size:1.1rem;font-weight:400}
-        .registration-text ul{margin-bottom:25px;padding-left:20px}
-        .registration-text ul li{margin-bottom:12px;color:var(--text-light);font-size:1.1rem;font-weight:400}
-        .registration-text ul li strong{color:var(--primary);font-weight:600}
-        .registration-image{flex:1;border-radius:15px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,0.6);border:1px solid var(--accent)}
-        .registration-image img{width:100%;height:auto;display:block;filter:contrast(1.02) brightness(0.96)}
-
-        .btn-register{
-            display:inline-block;padding:18px 45px;background:var(--gradient);color:var(--secondary);text-decoration:none;border-radius:50px;font-weight:700;font-size:16px;transition:all .28s var(--ease);border:none;cursor:pointer;box-shadow:0 8px 30px rgba(230,46,46,0.32);letter-spacing:1.5px;text-transform:uppercase;font-family:'Montserrat',sans-serif;margin-top:20px;
-        }
-        .btn-register:hover{transform:translateY(-6px);box-shadow:0 22px 60px rgba(230,46,46,0.45)}
-
-        /* ===========================
-           FOOTER (kept same sizes; added hover glows and focus)
-           =========================== */
-        footer{background-color:var(--dark);color:var(--secondary);padding:80px 0 40px;border-top:1px solid var(--accent)}
-        .footer-container{display:flex;justify-content:space-between;margin-bottom:60px}
-        .footer-about{flex:1;margin-right:40px}
-        .footer-links{flex:1;display:flex;justify-content:space-between}
-        .footer-links-column h3{margin-bottom:25px;color:var(--primary);font-size:1.2rem;font-weight:700;text-transform:uppercase;letter-spacing:1px}
-        .footer-links-column ul{list-style:none}
-        .footer-links-column ul li{margin-bottom:12px}
-        .footer-links-column ul li a{color:var(--text-light);text-decoration:none;transition:color .22s}
-        .footer-links-column ul li a:hover{color:var(--primary);text-shadow:0 6px 22px rgba(230,46,46,0.06)}
-        .footer-bottom{text-align:center;padding-top:40px;border-top:1px solid var(--accent);font-size:0.9rem;color:#999;font-weight:400}
-        .social-links{display:flex;margin-top:25px}
-        .social-links a{display:flex;align-items:center;justify-content:center;width:45px;height:45px;background-color:var(--accent);border-radius:50%;margin-right:15px;color:var(--secondary);text-decoration:none;transition:all .22s;font-size:1.1rem}
-        .social-links a:hover{background:linear-gradient(90deg,var(--primary),var(--primary-dark));transform:translateY(-4px);box-shadow:0 18px 46px rgba(230,46,46,0.12)}
-
-        /* ===========================
-           REVEAL & INTERACTIONS (no size changes)
-           =========================== */
-        .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
-        .reveal.revealed{opacity:1;transform:none}
-
-        .float{transition:transform .6s var(--ease)}
-        .float:hover{transform:translateY(-8px) rotate(-0.4deg) scale(1.01)}
-
-        /* ===========================
-           RESPONSIVE: preserved exactly like original
-           =========================== */
-        @media (max-width: 992px) {
-            .about-content, .theme-content, .registration-content {flex-direction:column}
-            .footer-container {flex-direction:column}
-            .footer-about {margin-right:0;margin-bottom:50px}
-            .footer-links {flex-wrap:wrap}
-            .footer-links-column {flex:0 0 50%;margin-bottom:30px}
-            header {width:90%;padding:0 25px;min-width:auto}
-            .header-container {gap:20px}
-        }
-
-        @media (max-width: 768px) {
-            header {width:95%;padding:0 20px}
-            nav ul {gap:8px}
-            nav ul li a {padding:10px 15px;font-size:12px}
-            .logo-main {font-size:20px}
-            .hero {padding:150px 0 100px;background-attachment:scroll}
-            .hero h1 {font-size:2.2rem}
-            .hero h2 {font-size:1.4rem}
-            .section-title h2 {font-size:2rem}
-            .tedx-box h3 {font-size:2rem}
-            .footer-links-column {flex:0 0 100%}
-        }
-
-        @media (max-width: 576px) {
-            header {width:98%;padding:0 15px}
-            .header-container {flex-direction:column;gap:10px;padding:15px 0}
-            nav ul {flex-wrap:wrap;gap:5px}
-            nav ul li {flex:0 0 calc(50% - 10px)}
-            nav ul li a {padding:8px 12px;font-size:11px}
-            .logo-main {font-size:18px}
-            .logo-sub {font-size:8px}
-            .hero h1 {font-size:1.8rem}
-            .hero h2 {font-size:1.2rem}
-            .section-title h2 {font-size:1.6rem}
-            .btn {padding:12px 25px;font-size:12px}
-            .tedx-box {padding:40px 20px}
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/enhanced.css">
 </head>
 <body>
-    <!-- Centered Transparent Tab Island Navigation -->
-    <header id="header" aria-label="Main navigation">
-        <div class="container header-container">
-            <div class="logo" aria-hidden="true">
-                <div class="logo-main">TEDx</div>
-                <div class="logo-sub">Silver Oaks</div>
+    <!-- Enhanced Maya-themed Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="maya-logo">
+                <div class="logo-ring"></div>
+                <div class="logo-ring"></div>
+                <div class="logo-ring"></div>
+                <div class="logo-center">
+                    <span class="tedx-text">TED<span class="x-red">x</span></span>
+                </div>
             </div>
-            <nav>
-                <ul id="nav-menu">
-                    <li><a href="#home" class="active">Home</a></li>
-                    <li><a href="#mission">Purpose</a></li>
-                    <li><a href="#about-ted">About TED</a></li>
-                    <li><a href="#theme">Theme</a></li>
-                    <li><a href="#registration">Register</a></li>
-                    <li><a href="#contact">Contact</a></li>
+            <div class="loading-text">
+                <span class="maya-word">Maya</span>
+                <span class="loading-dots">
+                    <span>.</span><span>.</span><span>.</span>
+                </span>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Transition -->
+    <div id="page-transition"></div>
+
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="glow-orb glow-1"></div>
+        <div class="glow-orb glow-2"></div>
+        <div class="glow-orb glow-3"></div>
+        <div class="particle-field"></div>
+    </div>
+
+    <!-- Navigation -->
+    <header id="header">
+        <div class="container">
+            <nav class="main-nav">
+                <a href="index.html" class="logo-link">
+                    <div class="logo">
+                        <span class="logo-ted">TED</span><span class="logo-x">x</span>
+                        <span class="logo-subtitle">Silver Oaks</span>
+                    </div>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="pages/about.html">About</a></li>
+                    <li><a href="pages/speakers.html">Speakers</a></li>
+                    <li><a href="pages/team.html">Team</a></li>
+                    <li><a href="pages/register.html" class="btn-nav">Register</a></li>
                 </ul>
+                <button class="mobile-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero" id="home" role="region" aria-label="Hero">
-        <div class="container hero-content">
-            <h1 class="glow">TEDx Silveroaks Int School 2025</h1>
-            <h2>Maya: Illusions in Daily Life</h2>
-            <p>Explore the modern-day 'Maya'—the illusions of our minds, our societies, and our digital lives—to uncover a deeper, more authentic reality.</p>
-            <a href="#mission" class="btn">Purpose & Impact</a>
-            <a href="#registration" class="btn btn-outline">Register Now</a>
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge reveal">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>2025 • Hyderabad</span>
+                </div>
+                <h1 class="hero-title reveal">
+                    <span class="title-line">Unveiling</span>
+                    <span class="title-line highlight">Maya</span>
+                    <span class="title-line">The Illusions of Reality</span>
+                </h1>
+                <p class="hero-subtitle reveal">
+                    Explore the modern-day illusions of our minds, societies, and digital lives—<br>
+                    to discover a deeper, more authentic truth.
+                </p>
+                <div class="hero-cta reveal">
+                    <a href="pages/register.html" class="btn btn-primary">
+                        <span>Join the Experience</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="pages/speakers.html" class="btn btn-outline">
+                        <span>Meet Our Speakers</span>
+                    </a>
+                </div>
+                <div class="scroll-indicator">
+                    <span>Scroll to explore</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Mission Section -->
-    <section class="mission" id="mission" role="region" aria-label="Mission">
+    <!-- Stats Counter -->
+    <section class="stats-section">
         <div class="container">
-            <div class="section-title">
-                <h2>Purpose & Impact</h2>
-                <p>Discover what drives TEDx and the difference it makes</p>
-            </div>
-            <div class="mission-grid">
-                <div class="mission-card reveal">
-                    <div class="mission-icon">
-                        <i class="fas fa-bullseye"></i>
+            <div class="stats-grid">
+                <div class="stat-card reveal">
+                    <div class="stat-icon">
+                        <i class="fas fa-microphone"></i>
                     </div>
-                    <h3>Purpose</h3>
-                    <p>The purpose of TEDx, created in the spirit of TED's overall mission to discover "ideas worth spreading", is to connect bright minds and accomplished individuals to inspire the next generation of thinkers. TEDx is organised locally by passionate individuals to bring local voices forward. These events are branded TEDx, where x = independently organised TED event.</p>
+                    <div class="stat-number" data-target="12">0</div>
+                    <div class="stat-label">Inspiring Speakers</div>
                 </div>
-                <div class="mission-card reveal">
-                    <div class="mission-icon">
-                        <i class="fas fa-handshake"></i>
+                <div class="stat-card reveal">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
                     </div>
-                    <h3>Impact</h3>
-                    <p>TEDx has always been more than just a platform for speeches; it is a space for connection, inspiration and transformation. By convening speakers from various fields, TEDx creates a global forum that puts forth various perspectives on ideas that matter. Moreover, it gives curious young minds an opportunity to interact and learn from leaders in the community.</p>
+                    <div class="stat-number" data-target="500">0</div>
+                    <div class="stat-label">Expected Attendees</div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About TED Section -->
-    <section class="about-ted" id="about-ted" aria-label="About TED">
-        <div class="container">
-            <div class="section-title">
-                <h2>About TED & TEDx</h2>
-                <p>Learn about the organizations behind our event</p>
-            </div>
-
-            <div class="about-content">
-                <div class="about-text reveal">
-                    <h3>About TED</h3>
-                    <p>TED is a nonprofit, nonpartisan organization dedicated to discovering, debating and spreading ideas that spark conversation, deepen understanding and drive meaningful change.</p>
-                    <p>Our organization is devoted to curiosity, reason, wonder and the pursuit of knowledge — without an agenda. We welcome people from every discipline and culture who seek a deeper understanding of the world and connection with others, and we invite everyone to engage with ideas and activate them in your community.</p>
+                <div class="stat-card reveal">
+                    <div class="stat-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="stat-number" data-target="24">0</div>
+                    <div class="stat-label">Ideas Worth Spreading</div>
                 </div>
-                <div class="about-image float reveal">
-                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="TED Conference">
-                </div>
-            </div>
-
-            <div class="tedx-explanation reveal">
-                <div class="tedx-box">
-                    <h3>About TEDx</h3>
-                    <span class="x-highlight">X = Independently Organized</span>
-                    <p>In the spirit of discovering and spreading ideas, TEDx is a program of local, self-organized events that bring people together to share a TED-like experience.</p>
-                    <p>At a TEDx event, TED Talks video and live speakers combine to spark deep discussion and connection. These local, self-organized events are branded TEDx, where x = independently organized TED event.</p>
-                    <p>The TED Conference provides general guidance for the TEDx program, but individual TEDx events are self-organized.</p>
+                <div class="stat-card reveal">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-number" data-target="8">0</div>
+                    <div class="stat-label">Hours of Inspiration</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Theme Section -->
-    <section class="theme" id="theme" aria-label="Theme">
+    <section class="theme-section">
         <div class="container">
-            <div class="section-title">
-                <h2>Event Theme</h2>
-                <p>Maya: Illusions in Daily Life</p>
+            <div class="section-header reveal">
+                <span class="section-tag">Event Theme 2025</span>
+                <h2 class="section-title">Maya: Illusions in Daily Life</h2>
+                <p class="section-subtitle">Breaking through the veils of perception</p>
             </div>
             <div class="theme-content">
                 <div class="theme-text reveal">
-                    <h3>Maya: The Illusions in Daily Life</h3>
-                    <p>We live in a world that constantly blurs the line between what is real and what only seems real. Maya, drawn from Indian philosophy, explores this very illusion: the deception and magic woven into our everyday lives. From the stories we read and the media we consume, to the technology that shapes our reality, illusion surrounds us.</p>
-                    <p>TEDxSilver Oaks Intl School Bachupally invites speakers to question and reveal what lies beyond appearances, and to help others see through the veil of illusion.</p>
-                    <p>In this edition of TEDxSilverOaksIntSchoolBachupally, we deconstruct the 'Maya' of the 21st century:</p>
-                    <ul>
-                        <li><strong>The Illusion of Self:</strong> Are our personalities fixed, or fluid constructs?</li>
-                        <li><strong>The Illusion of Time:</strong> Why do we feel so time-poor in an age of efficiency?</li>
-                        <li><strong>The Illusion of Connection:</strong> Is social media bringing us together or building walls?</li>
-                        <li><strong>The Illusion of Certainty:</strong> In a complex world, why do we crave simple answers?</li>
-                    </ul>
-                    <a href="#registration" class="btn">Register Now</a>
+                    <div class="theme-intro">
+                        <p class="lead">In a world where reality and illusion intertwine, <strong>Maya</strong> emerges as the perfect lens through which we examine modern existence.</p>
+                        <p>Drawn from ancient Indian philosophy, Maya represents the cosmic illusion—the deceptive nature of perceived reality. Today, this concept resonates more powerfully than ever.</p>
+                    </div>
+                    <div class="illusion-grid">
+                        <div class="illusion-card">
+                            <div class="illusion-icon">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <h3>The Illusion of Self</h3>
+                            <p>Are our identities fixed or fluid constructs shaped by society?</p>
+                        </div>
+                        <div class="illusion-card">
+                            <div class="illusion-icon">
+                                <i class="fas fa-hourglass-half"></i>
+                            </div>
+                            <h3>The Illusion of Time</h3>
+                            <p>Why do we feel time-poor in an age of unprecedented efficiency?</p>
+                        </div>
+                        <div class="illusion-card">
+                            <div class="illusion-icon">
+                                <i class="fas fa-network-wired"></i>
+                            </div>
+                            <h3>The Illusion of Connection</h3>
+                            <p>Does social media unite us or create invisible walls?</p>
+                        </div>
+                        <div class="illusion-card">
+                            <div class="illusion-icon">
+                                <i class="fas fa-question-circle"></i>
+                            </div>
+                            <h3>The Illusion of Certainty</h3>
+                            <p>Why do we crave simple answers in a complex world?</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="theme-image float reveal">
-                    <img src="https://images.unsplash.com/photo-1551135049-8a33b5883817?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="TEDx Event">
+                <div class="theme-visual reveal">
+                    <div class="visual-frame">
+                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80" alt="Maya Concept">
+                        <div class="frame-overlay"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Registration Section -->
-    <section class="registration" id="registration" aria-label="Registration">
+    <!-- Why Attend Section -->
+    <section class="why-attend-section">
         <div class="container">
-            <div class="section-title">
-                <h2>Registration</h2>
-                <p>Secure your spot at TEDx Silveroaks International School 2025</p>
+            <div class="section-header reveal">
+                <span class="section-tag">Why Join Us</span>
+                <h2 class="section-title">An Experience Beyond Ideas</h2>
             </div>
-            <div class="registration-content">
-                <div class="registration-text reveal">
-                    <h3>Join Us for an Unforgettable Experience</h3>
-                    <p>Be part of this transformative event where we'll explore the illusions that shape our daily lives and discover pathways to more authentic living.</p>
-                    <p>Registration is now open for TEDx Silveroaks International School 2025. Don't miss this opportunity to connect with like-minded individuals and be inspired by thought-provoking talks.</p>
-                    <p><strong>Event Details:</strong></p>
-                    <ul>
-                        <li><strong>Date:</strong> [Date to be announced]</li>
-                        <li><strong>Time:</strong> [Time to be announced]</li>
-                        <li><strong>Venue:</strong> Silveroaks International School, Bachupally</li>
-                        <li><strong>Theme:</strong> Maya: Illusions in Daily Life</li>
-                    </ul>
-                    <p>Spaces are limited, so register early to secure your attendance at this exclusive event.</p>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdfbOn21jDfF6wDeuKQ0jubuc-vOPr6NmGQRYVm6bGgDZ4oQg/viewform?usp=dialog" class="btn-register" target="_blank" rel="noopener">
-                        <i class="fas fa-user-plus"></i> Register Now
-                    </a>
+            <div class="features-grid">
+                <div class="feature-card reveal">
+                    <div class="feature-number">01</div>
+                    <h3>Thought-Provoking Talks</h3>
+                    <p>Engage with carefully curated speakers who challenge perspectives and inspire action.</p>
                 </div>
-                <div class="registration-image float reveal">
-                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Registration for TEDx">
+                <div class="feature-card reveal">
+                    <div class="feature-number">02</div>
+                    <h3>Networking Opportunities</h3>
+                    <p>Connect with like-minded individuals, innovators, and thought leaders from diverse fields.</p>
                 </div>
+                <div class="feature-card reveal">
+                    <div class="feature-number">03</div>
+                    <h3>Interactive Sessions</h3>
+                    <p>Participate in workshops and discussions that transform ideas into tangible insights.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-number">04</div>
+                    <h3>Cultural Experience</h3>
+                    <p>Immerse yourself in performances and exhibitions that celebrate creativity and innovation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content reveal">
+                <h2>Ready to See Beyond the Illusion?</h2>
+                <p>Join us for an unforgettable journey into ideas worth spreading.</p>
+                <a href="pages/register.html" class="btn btn-large">
+                    <span>Register Now — Coming Soon</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer id="contact" role="contentinfo" aria-label="Footer">
+    <footer class="footer">
         <div class="container">
-            <div class="footer-container">
-                <div class="footer-about reveal">
-                    <div class="logo" aria-hidden="true">
-                        <div class="logo-main">TEDx</div>
-                        <div class="logo-sub">Silver Oaks Intl School</div>
-                        <div class="logo-sub">Bachupally</div>
+            <div class="footer-content">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <span class="logo-ted">TED</span><span class="logo-x">x</span>
+                        <span class="footer-subtitle">Silver Oaks Intl School</span>
                     </div>
-                    <p>This independent TEDx event is operated under license from TED. Join us as we explore ideas worth spreading in our community.</p>
+                    <p class="footer-desc">This independent TEDx event is operated under license from TED.</p>
                     <div class="social-links">
                         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
-                <div class="footer-links reveal">
-                    <div class="footer-links-column">
-                        <h3>Quick Links</h3>
-                        <ul>
-                            <li><a href="#home">Home</a></li>
-                            <li><a href="#mission">Purpose & Impact</a></li>
-                            <li><a href="#about-ted">About TED</a></li>
-                            <li><a href="#theme">Theme</a></li>
-                            <li><a href="#registration">Register</a></li>
-                            <li><a href="#contact">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-links-column">
-                        <h3>Resources</h3>
-                        <ul>
-                            <li><a href="#">Past Events</a></li>
-                            <li><a href="#">Speaker Profiles</a></li>
-                            <li><a href="#">Photo Gallery</a></li>
-                            <li><a href="#registration">Get Involved</a></li>
-                        </ul>
-                    </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="pages/about.html">About TED & TEDx</a></li>
+                        <li><a href="pages/speakers.html">Speakers</a></li>
+                        <li><a href="pages/team.html">Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Event Info</h4>
+                    <ul>
+                        <li><a href="pages/register.html">Registration</a></li>
+                        <li><a href="#">Schedule</a></li>
+                        <li><a href="#">Venue</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Bachupally, Hyderabad</li>
+                        <li><i class="fas fa-envelope"></i> info@tedxsilveroaks.com</li>
+                        <li><i class="fas fa-phone"></i> +91 XXX XXX XXXX</li>
+                    </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 TEDxSilverOaksIntSchoolBachupally. This independent TEDx event is operated under license from TED.</p>
+                <p>&copy; 2025 TEDxSilverOaksIntSchoolBachupally. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- =========================
-         SCRIPTS: reveal + interactions (kept simple & performant)
-         ========================= -->
-    <script>
-        // Smooth scrolling for navigation links (preserve original behavior)
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-
-                // Remove active class from all links
-                document.querySelectorAll('nav a').forEach(link => {
-                    link.classList.remove('active');
-                });
-
-                // Add active class to clicked link
-                this.classList.add('active');
-
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Header scroll effect (preserved; small tweak: stronger scrolled shadow)
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Intersection Observer for reveal animations (non-blocking)
-        (function() {
-            const revealElements = document.querySelectorAll('.reveal');
-            if ('IntersectionObserver' in window) {
-                const io = new IntersectionObserver((entries, obs) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('revealed');
-                            obs.unobserve(entry.target);
-                        }
-                    });
-                }, {threshold: 0.08, rootMargin: '0px 0px -6% 0px'});
-
-                revealElements.forEach((el, i) => {
-                    el.style.transitionDelay = (i * 50) + 'ms';
-                    io.observe(el);
-                });
-            } else {
-                // fallback: reveal all
-                revealElements.forEach(el => el.classList.add('revealed'));
-            }
-        })();
-
-        // tiny hero pointer parallax (lightweight)
-        (function(){
-            const hero = document.querySelector('.hero');
-            if(!hero) return;
-            let rAF = null;
-            hero.addEventListener('mousemove', function(e){
-                const rect = hero.getBoundingClientRect();
-                const x = (e.clientX - rect.left) / rect.width - 0.5;
-                const y = (e.clientY - rect.top) / rect.height - 0.5;
-                if(rAF) cancelAnimationFrame(rAF);
-                rAF = requestAnimationFrame(() => {
-                    // minimal transform to avoid size/layout changes
-                    hero.style.transform = `translateZ(0) perspective(800px) rotateY(${x * 0.6}deg) rotateX(${y * -0.4}deg)`;
-                });
-            });
-            hero.addEventListener('mouseleave', () => { hero.style.transform = 'none'; });
-        })();
-
-        // keyboard accessibility: show focus states on mission cards
-        (function(){
-            document.querySelectorAll('.mission-card').forEach(card => {
-                card.setAttribute('tabindex','0');
-                card.addEventListener('focus', ()=> card.classList.add('revealed'));
-            });
-        })();
-    </script>
+    <script src="assets/js/enhanced.js"></script>
 </body>
 </html>

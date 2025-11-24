@@ -1,0 +1,185 @@
+/* ===========================
+   External stylesheet extracted from index.html
+   Includes glow background, animations, preloader and page-transition
+   =========================== */
+:root {
+    --primary: #e62e2e;
+    --primary-dark: #cc0000;
+    --secondary: #ffffff;
+    --dark: #000000;
+    --light: #1a1a1a;
+    --accent: #333333;
+    --text-light: #cccccc;
+    --gradient: linear-gradient(135deg, #e62e2e 0%, #cc0000 100%);
+    --glow-strong: 0 10px 60px rgba(230,46,46,0.20);
+    --glow-soft: 0 6px 30px rgba(230,46,46,0.12);
+    --glass-border: rgba(255,255,255,0.08);
+    --card-elev: 0 20px 50px rgba(0,0,0,0.6);
+    --ease: cubic-bezier(.2,.9,.3,1);
+}
+
+/* Global reset */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+    font-family:'Montserrat',sans-serif;
+    color:var(--secondary);
+    background-color:var(--dark);
+    line-height:1.7;
+    overflow-x:hidden;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    position:relative;
+}
+
+/* Glow behind page */
+body::before{
+    content:'';position:fixed;inset:0;z-index:-2;pointer-events:none;
+    background:
+        radial-gradient(800px 400px at 10% 10%, rgba(230,46,46,0.06), transparent 10%),
+        radial-gradient(600px 300px at 90% 80%, rgba(204,0,0,0.05), transparent 8%),
+        linear-gradient(180deg, rgba(5,5,10,0.45), rgba(0,0,0,0.6));
+    mix-blend-mode:overlay;filter:blur(30px);
+}
+
+h1,h2,h3,h4,h5,h6{font-family:'Montserrat',sans-serif;font-weight:700;line-height:1.3}
+.container{width:90%;max-width:1200px;margin:0 auto;padding:0 15px}
+
+/* Navigation */
+header{
+    background-color: rgba(0,0,0,0.2);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    position: fixed;
+    width: auto;
+    min-width: 650px;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    transition: all 0.4s var(--ease);
+    border-radius: 50px;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    padding: 0 30px;
+}
+header.scrolled{background-color: rgba(0,0,0,0.45);box-shadow: 0 14px 48px rgba(0,0,0,0.55), 0 0 80px rgba(0,0,0,0.15) inset;top:20px}
+.header-container{display:flex;justify-content:center;align-items:center;padding:12px 0;gap:40px}
+.logo{display:flex;flex-direction:column;line-height:1.2;flex-shrink:0}
+.logo-main{font-family:'Montserrat',sans-serif;font-size:24px;font-weight:800;color:var(--primary);letter-spacing:1px;text-shadow: 0 6px 18px rgba(230,46,46,0.08)}
+.logo-sub{font-size:9px;color:var(--secondary);font-weight:600;letter-spacing:2px;text-transform:uppercase;opacity:.85}
+
+nav{flex:1;display:flex;justify-content:center}
+nav ul{display:flex;list-style:none;gap:15px;margin:0;padding:0;justify-content:center;align-items:center}
+nav ul li{margin:0}
+nav ul li a{ text-decoration:none;color:var(--secondary);font-weight:500;font-size:13px;transition: all .28s var(--ease);position:relative;padding:12px 25px;text-transform:uppercase;letter-spacing:1px;border-radius:25px;background: rgba(255,255,255,0.04);backdrop-filter: blur(10px);-webkit-backdrop-filter: blur(10px);border:1px solid rgba(255,255,255,0.06);display:block;white-space:nowrap;text-align:center;overflow:visible }
+nav ul li a::after{content:'';position:absolute;left:12px;right:12px;bottom:8px;height:2px;border-radius:4px;background:linear-gradient(90deg, rgba(230,46,46,0.0), rgba(230,46,46,0.85), rgba(230,46,46,0.0));opacity:0;transform:translateY(6px) scaleX(.95);transition:all .28s var(--ease)}
+nav ul li a:hover{color:var(--primary);background: rgba(230,46,46,0.08);border-color: rgba(230,46,46,0.28);transform: translateY(-3px);box-shadow: var(--glow-soft)}
+nav ul li a:hover::after{opacity:1;transform:translateY(0) scaleX(1)}
+nav ul li a.active{color:var(--primary);background: rgba(230,46,46,0.14);border-color: rgba(230,46,46,0.36);box-shadow: var(--glow-strong)}
+nav ul li a:focus{outline:3px solid rgba(230,46,46,0.12);outline-offset:4px;box-shadow:var(--glow-soft)}
+.mobile-menu{display:none !important}
+
+/* Hero */
+.hero{background:linear-gradient(rgba(0,0,0,0.78), rgba(0,0,0,0.88)), url('https://i.ibb.co/tphx86vQ/maya.jpg');background-size:cover;background-position:center;background-repeat:no-repeat;color:var(--secondary);padding:200px 0 150px;text-align:center;position:relative;overflow:hidden;min-height:100vh;display:flex;align-items:center}
+.hero-content{max-width:900px;margin:0 auto;position:relative;z-index:2}
+.hero h1{font-size:3.5rem;margin-bottom:20px;letter-spacing:2px;font-weight:800;text-transform:uppercase;text-shadow:0 6px 30px rgba(0,0,0,0.75), 0 0 18px rgba(230,46,46,0.06);transition: text-shadow .35s var(--ease), transform .35s var(--ease)}
+.hero h1.glow{animation: heroGlow 3.6s ease-in-out infinite}
+@keyframes heroGlow{0%{text-shadow:0 6px 30px rgba(0,0,0,0.75), 0 0 6px rgba(230,46,46,0.03)}50%{text-shadow:0 10px 60px rgba(0,0,0,0.75), 0 0 30px rgba(230,46,46,0.10)}100%{text-shadow:0 6px 30px rgba(0,0,0,0.75), 0 0 6px rgba(230,46,46,0.03)}}
+.hero h2{font-size:1.8rem;margin-bottom:30px;font-weight:400;letter-spacing:1px;text-shadow:0 2px 8px rgba(0,0,0,0.7)}
+.hero p{font-size:1.2rem;max-width:700px;margin:0 auto 50px;color:var(--text-light);font-weight:400;text-shadow:0 2px 5px rgba(0,0,0,0.7)}
+.btn{display:inline-block;padding:15px 35px;background:var(--gradient);color:var(--secondary);text-decoration:none;border-radius:50px;font-weight:600;font-size:14px;transition:all .28s var(--ease);border:none;cursor:pointer;box-shadow:0 6px 26px rgba(230,46,46,0.22);letter-spacing:1px;text-transform:uppercase;font-family:'Montserrat',sans-serif}
+.btn:focus{outline:4px solid rgba(230,46,46,0.10);outline-offset:4px}
+.btn:hover{transform:translateY(-4px);box-shadow:var(--glow-strong);filter:brightness(1.03)}
+.btn-outline{background:transparent;border:2px solid var(--primary);color:var(--secondary);margin-left:20px}
+.btn-outline:hover{background:var(--primary);box-shadow:0 10px 30px rgba(204,0,0,0.18);color:#fff}
+.btn::after{content:"";position:absolute;pointer-events:none;left:-30%;top:0;height:100%;width:30%;background:linear-gradient(120deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));transform:skewX(-18deg) translateX(-120%);transition:transform .8s var(--ease);border-radius:50%}
+.btn:hover::after{transform:skewX(-18deg) translateX(300%)}
+
+/* Mission */
+.mission{padding:120px 0;background-color:var(--light)}
+.section-title{text-align:center;margin-bottom:80px}
+.section-title h2{font-size:2.5rem;color:var(--primary);margin-bottom:20px;position:relative;display:inline-block;font-weight:700;text-transform:uppercase;letter-spacing:2px}
+.section-title h2::after{content:'';position:absolute;width:80px;height:4px;background-color:var(--primary);bottom:-15px;left:50%;transform:translateX(-50%)}
+.section-title p{max-width:700px;margin:30px auto 0;font-size:1.1rem;color:var(--text-light);font-weight:400}
+.mission-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;margin-top:60px}
+.mission-card{background-color: rgba(18,18,18,0.95);border-radius:15px;padding:40px 30px;text-align:center;transition:all .32s var(--ease);border:1px solid var(--glass-border);position:relative;overflow:hidden;backdrop-filter: blur(8px);box-shadow: var(--card-elev)}
+.mission-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:6px;background:linear-gradient(90deg, rgba(230,46,46,0.95), rgba(204,0,0,0.6));opacity:0.98}
+.mission-card:hover{transform:translateY(-10px);box-shadow:0 30px 80px rgba(0,0,0,0.7), 0 0 40px rgba(230,46,46,0.06);border-color: rgba(230,46,46,0.08)}
+.mission-icon{font-size:3rem;color:var(--primary);margin-bottom:25px;text-shadow:0 6px 18px rgba(230,46,46,0.06)}
+.mission-card h3{font-size:1.5rem;margin-bottom:20px;color:var(--secondary);font-weight:700}
+.mission-card p{color:var(--text-light);font-size:1.1rem;font-weight:400}
+
+/* About/TED/Theme/Registration */
+.about-ted{padding:120px 0;background-color:var(--dark)}
+.about-content{display:flex;align-items:flex-start;gap:60px;margin-bottom:80px}
+.about-text{flex:1}
+.about-text h3{font-size:2rem;margin-bottom:25px;color:var(--primary);font-weight:700}
+.about-text p{margin-bottom:25px;color:var(--text-light);font-size:1.1rem;font-weight:400}
+.about-image{flex:1;border-radius:15px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,0.6);border:1px solid var(--accent)}
+.about-image img{width:100%;height:auto;display:block;filter:contrast(1.04) brightness(0.94)}
+.tedx-explanation{background-color:var(--light);padding:80px 0;text-align:center}
+.tedx-box{background-color: rgba(18,18,18,0.95);border-radius:20px;padding:60px 40px;max-width:900px;margin:0 auto;border:1px solid var(--glass-border);box-shadow:0 20px 60px rgba(0,0,0,0.7);backdrop-filter: blur(6px)}
+.tedx-box h3{font-size:2.5rem;margin-bottom:30px;color:var(--primary);font-weight:800}
+.tedx-box p{font-size:1.2rem;color:var(--text-light);margin-bottom:30px}
+.x-highlight{font-size:3rem;color:var(--primary);font-weight:800;display:block;margin:20px 0;text-shadow:0 8px 28px rgba(230,46,46,0.06)}
+.theme{padding:120px 0;background-color:var(--light)}
+.theme-content{display:flex;align-items:center;gap:60px}
+.theme-text{flex:1}
+.theme-text h3{font-size:2rem;margin-bottom:25px;color:var(--primary);font-weight:700}
+.theme-text p{margin-bottom:25px;color:var(--text-light);font-size:1.1rem;font-weight:400}
+.theme-text ul{margin-bottom:25px;padding-left:20px}
+.theme-text ul li{margin-bottom:12px;color:var(--text-light);font-size:1.1rem;font-weight:400}
+.theme-text ul li strong{color:var(--primary);font-weight:600}
+.theme-image{flex:1;border-radius:15px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,0.6);border:1px solid var(--accent)}
+.theme-image img{width:100%;height:auto;display:block;filter:contrast(1.02) brightness(0.96)}
+.registration{padding:120px 0;background-color:var(--dark)}
+.registration-content{display:flex;align-items:center;gap:60px}
+.registration-text{flex:1}
+.registration-text h3{font-size:2rem;margin-bottom:25px;color:var(--primary);font-weight:700}
+.registration-text p{margin-bottom:25px;color:var(--text-light);font-size:1.1rem;font-weight:400}
+.registration-text ul{margin-bottom:25px;padding-left:20px}
+.registration-text ul li{margin-bottom:12px;color:var(--text-light);font-size:1.1rem;font-weight:400}
+.registration-text ul li strong{color:var(--primary);font-weight:600}
+.registration-image{flex:1;border-radius:15px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,0.6);border:1px solid var(--accent)}
+.registration-image img{width:100%;height:auto;display:block;filter:contrast(1.02) brightness(0.96)}
+.btn-register{display:inline-block;padding:18px 45px;background:var(--gradient);color:var(--secondary);text-decoration:none;border-radius:50px;font-weight:700;font-size:16px;transition:all .28s var(--ease);border:none;cursor:pointer;box-shadow:0 8px 30px rgba(230,46,46,0.32);letter-spacing:1.5px;text-transform:uppercase;font-family:'Montserrat',sans-serif;margin-top:20px}
+.btn-register:hover{transform:translateY(-6px);box-shadow:0 22px 60px rgba(230,46,46,0.45)}
+
+/* Footer */
+footer{background-color:var(--dark);color:var(--secondary);padding:80px 0 40px;border-top:1px solid var(--accent)}
+.footer-container{display:flex;justify-content:space-between;margin-bottom:60px}
+.footer-about{flex:1;margin-right:40px}
+.footer-links{flex:1;display:flex;justify-content:space-between}
+.footer-links-column h3{margin-bottom:25px;color:var(--primary);font-size:1.2rem;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.footer-links-column ul{list-style:none}
+.footer-links-column ul li{margin-bottom:12px}
+.footer-links-column ul li a{color:var(--text-light);text-decoration:none;transition:color .22s}
+.footer-links-column ul li a:hover{color:var(--primary);text-shadow:0 6px 22px rgba(230,46,46,0.06)}
+.footer-bottom{text-align:center;padding-top:40px;border-top:1px solid var(--accent);font-size:0.9rem;color:#999;font-weight:400}
+.social-links{display:flex;margin-top:25px}
+.social-links a{display:flex;align-items:center;justify-content:center;width:45px;height:45px;background-color:var(--accent);border-radius:50%;margin-right:15px;color:var(--secondary);text-decoration:none;transition:all .22s;font-size:1.1rem}
+.social-links a:hover{background:linear-gradient(90deg,var(--primary),var(--primary-dark));transform:translateY(-4px);box-shadow:0 18px 46px rgba(230,46,46,0.12)}
+
+/* Interactions */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.revealed{opacity:1;transform:none}
+.float{transition:transform .6s var(--ease)}
+.float:hover{transform:translateY(-8px) rotate(-0.4deg) scale(1.01)}
+
+/* Page transition overlay (shown when navigating between pages) */
+#page-transition{position:fixed;inset:0;background:radial-gradient(circle at 30% 20%, rgba(230,46,46,0.06), transparent 6%), rgba(0,0,0,0.3);z-index:2000;pointer-events:none;opacity:0;transition:opacity .45s ease}
+#page-transition.visible{opacity:1;pointer-events:auto}
+
+/* Preloader */
+#preloader{position:fixed;inset:0;z-index:3000;background:linear-gradient(180deg, rgba(0,0,0,0.9), rgba(0,0,0,0.85));display:flex;align-items:center;justify-content:center}
+#preloader .preloader-inner{display:flex;flex-direction:column;align-items:center;gap:16px;color:var(--secondary);opacity:1;transition:opacity .45s ease,transform .45s ease}
+#preloader svg{filter:drop-shadow(0 8px 30px rgba(230,46,46,0.12))}
+#preloader .preloader-text{font-weight:600;letter-spacing:1px}
+#preloader.hidden{opacity:0;transform:translateY(-10px);pointer-events:none}
+
+/* Responsive tweaks */
+@media (max-width: 992px) {.about-content, .theme-content, .registration-content {flex-direction:column}.footer-container {flex-direction:column}.footer-about {margin-right:0;margin-bottom:50px}.footer-links {flex-wrap:wrap}.footer-links-column {flex:0 0 50%;margin-bottom:30px}header {width:90%;padding:0 25px;min-width:auto}.header-container {gap:20px}}
+@media (max-width: 768px) {header {width:95%;padding:0 20px}nav ul {gap:8px}nav ul li a {padding:10px 15px;font-size:12px}.logo-main {font-size:20px}.hero {padding:150px 0 100px;background-attachment:scroll}.hero h1 {font-size:2.2rem}.hero h2 {font-size:1.4rem}.section-title h2 {font-size:2rem}.tedx-box h3 {font-size:2rem}.footer-links-column {flex:0 0 100%}}
+@media (max-width: 576px) {header {width:98%;padding:0 15px}.header-container {flex-direction:column;gap:10px;padding:15px 0}nav ul {flex-wrap:wrap;gap:5px}nav ul li {flex:0 0 calc(50% - 10px)}nav ul li a {padding:8px 12px;font-size:11px}.logo-main {font-size:18px}.logo-sub {font-size:8px}.hero h1 {font-size:1.8rem}.hero h2 {font-size:1.2rem}.section-title h2 {font-size:1.6rem}.btn {padding:12px 25px;font-size:12px}.tedx-box {padding:40px 20px}}
