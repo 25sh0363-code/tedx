@@ -1178,16 +1178,25 @@ body {
     }
     
     .stats-grid {
-        grid-template-columns: 1fr;
-        gap: 25px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
     }
     
     .stat-card {
-        padding: 30px 20px;
+        padding: 25px 15px;
+    }
+    
+    .stat-icon {
+        font-size: 36px;
+        margin-bottom: 15px;
     }
     
     .stat-number {
-        font-size: 48px;
+        font-size: 42px;
+    }
+    
+    .stat-label {
+        font-size: 13px;
     }
     
     .theme-section {
@@ -1243,12 +1252,25 @@ body {
     }
     
     .features-grid {
-        grid-template-columns: 1fr;
-        gap: 25px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
     }
     
     .feature-card {
-        padding: 30px 25px;
+        padding: 25px 20px;
+    }
+    
+    .feature-number {
+        font-size: 36px;
+    }
+    
+    .feature-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+    }
+    
+    .feature-card p {
+        font-size: 0.85rem;
     }
     
     .cta-section {
