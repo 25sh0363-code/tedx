@@ -1178,18 +1178,21 @@ body {
     }
     
     .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 15px;
-        max-width: 500px;
+        max-width: 600px;
         margin: 0 auto;
     }
     
-    .stat-card:nth-child(3) {
-        grid-column: 1 / -1;
+    .stat-card {
+        flex: 0 1 calc(50% - 8px);
         max-width: 250px;
-        margin: 0 auto;
-        width: 100%;
+    }
+    
+    .stat-card:nth-child(3) {
+        flex: 0 1 250px;
     }
     
     .stat-card {
@@ -1210,25 +1213,25 @@ body {
     }
     
     .theme-section {
-        padding: 60px 0;
+        padding: 80px 0;
     }
     
     .section-header {
-        margin-bottom: 40px;
+        margin-bottom: 50px;
     }
     
     .section-tag {
-        font-size: 11px;
-        padding: 6px 16px;
+        font-size: 12px;
+        padding: 8px 18px;
     }
     
     .section-title {
-        font-size: clamp(2rem, 8vw, 3rem);
-        margin-bottom: 15px;
+        font-size: clamp(2.5rem, 10vw, 3.5rem);
+        margin-bottom: 20px;
     }
     
     .section-subtitle {
-        font-size: 1rem;
+        font-size: 1.15rem;
     }
     
     .theme-content {
@@ -1241,24 +1244,24 @@ body {
     
     .illusion-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
+        gap: 20px;
     }
     
     .illusion-card {
-        padding: 20px;
+        padding: 30px 20px;
     }
     
     .illusion-card h3 {
-        font-size: 1rem;
+        font-size: 1.15rem;
     }
     
     .illusion-card p {
-        font-size: 0.85rem;
+        font-size: 0.95rem;
     }
     
     .illusion-icon {
-        font-size: 24px;
-        margin-bottom: 10px;
+        font-size: 36px;
+        margin-bottom: 15px;
     }
     
     .features-grid {
