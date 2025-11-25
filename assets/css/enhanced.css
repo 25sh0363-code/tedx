@@ -399,21 +399,23 @@ body {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 0;
+    width: 0 !important;
     height: 2px;
     background: linear-gradient(90deg, var(--primary), var(--primary-light));
     transition: width 0.25s var(--ease-out);
     box-shadow: var(--glow-soft);
 }
 
-.nav-links a:hover,
-.nav-links a.active {
+.nav-links a:hover {
     color: var(--primary);
 }
 
-.nav-links a:hover::after,
-.nav-links a.active::after {
-    width: 100%;
+.nav-links a:hover::after {
+    width: 100% !important;
+}
+
+.nav-links a.active {
+    color: var(--primary);
 }
 
 .btn-nav {
@@ -1108,6 +1110,11 @@ body {
         display: block;
         padding: 15px;
         font-size: 18px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .nav-links a::after {
+        display: none !important;
     }
     
     .mobile-toggle {
