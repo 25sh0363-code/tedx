@@ -1475,4 +1475,40 @@ body {
     .reveal {
         transition: all 0.3s var(--ease-out);
     }
+    
+    /* Speaker cards mobile optimization */
+    .speaker-card {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+        margin-bottom: 60px !important;
+        padding: 0 15px;
+    }
+    
+    .speaker-card h3 {
+        font-size: clamp(1.8rem, 6vw, 2.5rem) !important;
+        margin-bottom: 10px !important;
+    }
+    
+    .speaker-card p[style*="font-size: 1.2rem"] {
+        font-size: 1rem !important;
+        margin-bottom: 20px !important;
+    }
+    
+    .speaker-card p[style*="font-size: 1.1rem"] {
+        font-size: 0.95rem !important;
+        line-height: 1.7 !important;
+    }
+    
+    .speaker-card img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    .speaker-card > div:first-child {
+        order: 1;
+    }
+    
+    .speaker-card > div:last-child {
+        order: 2;
+    }
 }
