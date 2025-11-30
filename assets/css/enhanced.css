@@ -476,7 +476,8 @@ body {
     transform: translate(-50%, -50%);
     z-index: 0;
     object-fit: cover;
-    filter: grayscale(100%);
+    filter: grayscale(100%) blur(2px) brightness(0.4);
+    opacity: 0.3;
 }
 
 .hero-overlay {
