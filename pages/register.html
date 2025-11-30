@@ -81,22 +81,61 @@
     <!-- Registration Section -->
     <section style="padding: 100px 0;">
         <div class="container">
-            <div class="cta-content reveal" style="max-width: 800px;">
-                <div style="font-size: 72px; margin-bottom: 30px; filter: drop-shadow(0 0 30px rgba(230, 43, 30, 0.3));">✨</div>
-                <h2 style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 20px;">Registrations Opening Soon</h2>
-                <p style="font-size: 1.2rem; color: var(--text-light); margin-bottom: 40px;">
-                    We're preparing an exceptional experience for you. Registration will open shortly — stay tuned for announcements!
-                </p>
-                
-                <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(230, 43, 30, 0.2); border-radius: 15px; padding: 30px; margin: 40px 0;">
-                    <h3 style="color: var(--primary); margin-bottom: 20px; font-size: 1.4rem;">Get Notified</h3>
-                    <p style="color: var(--text-light); margin-bottom: 25px;">Be the first to know when registration opens. Follow us on social media or check back soon!</p>
-                    <div class="social-links" style="justify-content: center;">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.instagram.com/tedxsilveroaks/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <div style="max-width: 900px; margin: 0 auto;">
+                <div class="section-header reveal" style="text-align: center; margin-bottom: 50px;">
+                    <span class="section-tag">Event Registration</span>
+                    <h2 class="section-title">Register for TEDx Silver Oaks 2025</h2>
+                    <p class="section-subtitle">Secure your spot at this year's event</p>
+                </div>
+
+                <!-- Payment QR Code -->
+                <div class="reveal" style="background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(230, 43, 30, 0.3); border-radius: 20px; padding: 40px; margin-bottom: 50px; text-align: center;">
+                    <h3 style="color: var(--primary); margin-bottom: 20px; font-size: 1.5rem;">Payment Information</h3>
+                    <p style="color: var(--text-light); margin-bottom: 30px;">Scan the QR code below to make payment</p>
+                    <div style="background: white; padding: 20px; border-radius: 15px; display: inline-block; margin-bottom: 20px;">
+                        <img src="../assets/images/payment-qr.png" alt="Payment QR Code" style="width: 250px; height: 250px; display: block;">
                     </div>
+                    <p style="color: var(--text-light); font-size: 0.95rem;"><strong>Note:</strong> Upload payment proof after completing the transaction</p>
+                </div>
+
+                <!-- Registration Form -->
+                <form id="registrationForm" class="reveal" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(230, 43, 30, 0.2); border-radius: 20px; padding: 40px;">
+                    <div style="margin-bottom: 25px;">
+                        <label style="display: block; color: var(--secondary); font-weight: 600; margin-bottom: 10px; font-size: 1.1rem;">Full Name *</label>
+                        <input type="text" name="name" required style="width: 100%; padding: 15px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; color: var(--secondary); font-size: 1rem;">
+                    </div>
+
+                    <div style="margin-bottom: 25px;">
+                        <label style="display: block; color: var(--secondary); font-weight: 600; margin-bottom: 10px; font-size: 1.1rem;">School/Institution *</label>
+                        <input type="text" name="school" required style="width: 100%; padding: 15px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; color: var(--secondary); font-size: 1rem;">
+                    </div>
+
+                    <div style="margin-bottom: 25px;">
+                        <label style="display: block; color: var(--secondary); font-weight: 600; margin-bottom: 10px; font-size: 1.1rem;">Email *</label>
+                        <input type="email" name="email" required style="width: 100%; padding: 15px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; color: var(--secondary); font-size: 1rem;">
+                    </div>
+
+                    <div style="margin-bottom: 25px;">
+                        <label style="display: block; color: var(--secondary); font-weight: 600; margin-bottom: 10px; font-size: 1.1rem;">Phone Number *</label>
+                        <input type="tel" name="phone" required style="width: 100%; padding: 15px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; color: var(--secondary); font-size: 1rem;">
+                    </div>
+
+                    <div style="margin-bottom: 30px;">
+                        <label style="display: block; color: var(--secondary); font-weight: 600; margin-bottom: 10px; font-size: 1.1rem;">Payment Proof (Screenshot) *</label>
+                        <input type="file" name="payment_proof" accept="image/*" required style="width: 100%; padding: 15px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; color: var(--secondary); font-size: 1rem;">
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">Upload a clear screenshot of your payment confirmation</p>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.1rem; padding: 18px;">
+                        <span>Submit Registration</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+
+                <div id="successMessage" style="display: none; background: rgba(76, 175, 80, 0.1); border: 2px solid rgba(76, 175, 80, 0.5); border-radius: 15px; padding: 30px; margin-top: 30px; text-align: center;">
+                    <i class="fas fa-check-circle" style="font-size: 48px; color: #4CAF50; margin-bottom: 15px;"></i>
+                    <h3 style="color: #4CAF50; margin-bottom: 10px;">Registration Successful!</h3>
+                    <p style="color: var(--text-light);">Thank you for registering. We'll confirm your payment and send you further details via email.</p>
                 </div>
 
                 <div style="margin-top: 50px;">
@@ -192,5 +231,39 @@
     </footer>
 
     <script src="../assets/js/enhanced.js"></script>
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const submitButton = this.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<span>Submitting...</span><i class="fas fa-spinner fa-spin"></i>';
+            
+            // Replace with your Google Apps Script Web App URL
+            const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+            
+            try {
+                const response = await fetch(scriptURL, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (response.ok) {
+                    document.getElementById('registrationForm').style.display = 'none';
+                    document.getElementById('successMessage').style.display = 'block';
+                } else {
+                    alert('Error submitting form. Please try again.');
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = '<span>Submit Registration</span><i class="fas fa-arrow-right"></i>';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error submitting form. Please try again.');
+                submitButton.disabled = false;
+                submitButton.innerHTML = '<span>Submit Registration</span><i class="fas fa-arrow-right"></i>';
+            }
+        });
+    </script>
 </body>
 </html>
