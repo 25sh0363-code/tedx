@@ -843,6 +843,71 @@ body {
     mix-blend-mode: multiply;
 }
 
+.theme-highlight {
+    background: rgba(230, 43, 30, 0.05);
+    border-left: 4px solid var(--primary);
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+.theme-aspects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.aspect-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(230, 43, 30, 0.2);
+    border-radius: 15px;
+    padding: 25px;
+    transition: all 0.3s var(--ease-out);
+}
+
+.aspect-card:hover {
+    background: rgba(230, 43, 30, 0.08);
+    border-color: rgba(230, 43, 30, 0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(230, 43, 30, 0.2);
+}
+
+.aspect-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(230, 43, 30, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    color: var(--primary);
+    font-size: 1.3rem;
+}
+
+.aspect-card h4 {
+    color: var(--secondary);
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.aspect-card p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.theme-conclusion {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.8;
+    font-style: italic;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 30px;
+}
+
 /* ============================================
    WHY ATTEND SECTION
    ============================================ */
@@ -1259,11 +1324,49 @@ body {
     }
     
     .theme-content {
-        gap: 40px;
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    
+    .theme-visual {
+        order: -1;
     }
     
     .lead {
         font-size: 1.1rem;
+    }
+    
+    .theme-highlight {
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+    
+    .theme-aspects {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .aspect-card {
+        padding: 20px;
+    }
+    
+    .aspect-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+    
+    .aspect-card h4 {
+        font-size: 1rem;
+    }
+    
+    .aspect-card p {
+        font-size: 0.85rem;
+    }
+    
+    .theme-conclusion {
+        font-size: 1rem;
+        padding-top: 20px;
     }
     
     .illusion-grid {
