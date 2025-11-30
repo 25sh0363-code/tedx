@@ -93,7 +93,7 @@
                     <h3 style="color: var(--primary); margin-bottom: 20px; font-size: 1.5rem;">Payment Information</h3>
                     <p style="color: var(--text-light); margin-bottom: 30px;">Scan the QR code below to make payment</p>
                     <div style="background: white; padding: 20px; border-radius: 15px; display: inline-block; margin-bottom: 20px;">
-                        <img src="../assets/images/payment-qr.jpeg" alt="Payment QR Code" style="width: 250px; height: 250px; display: block;">
+                        <img src="../assets/images/payment-qr.png" alt="Payment QR Code" style="width: 250px; height: 250px; display: block;">
                     </div>
                     <p style="color: var(--text-light); font-size: 0.95rem;"><strong>Note:</strong> Upload payment proof after completing the transaction</p>
                 </div>
@@ -121,9 +121,9 @@
                     </div>
 
                     <div style="margin-bottom: 30px;">
-                        <label style="display: block; color: var(--secondary); font-weight: 600; margin-bottom: 10px; font-size: 1.1rem;">Payment Proof (Google Drive Link) *</label>
-                        <input type="url" name="payment_proof" placeholder="https://drive.google.com/file/d/..." required style="width: 100%; padding: 15px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; color: var(--secondary); font-size: 1rem;">
-                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">📤 Upload screenshot to Google Drive → Right-click → Share → Copy link → Paste here</p>
+                        <label style="display: block; color: var(--secondary); font-weight: 600; margin-bottom: 10px; font-size: 1.1rem;">Payment Proof (Screenshot) *</label>
+                        <input type="file" name="payment_proof" accept="image/*" required style="width: 100%; padding: 15px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; color: var(--secondary); font-size: 1rem;">
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">Upload a clear screenshot of your payment confirmation (will be saved to Drive)</p>
                     </div>
 
                     <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.1rem; padding: 18px;">
@@ -241,41 +241,62 @@
             
             const scriptURL = 'https://script.google.com/macros/s/AKfycbzNNTKt19VTi-mWnYolT4uhuPU2-xpEuGi_q885wMCVpMB_YPkKZ4FU0SUPHj6OcORW/exec';
             
-            // Get form data
-            const formData = {
-                name: document.querySelector('[name="name"]').value,
-                school: document.querySelector('[name="school"]').value,
-                email: document.querySelector('[name="email"]').value,
-                phone: document.querySelector('[name="phone"]').value,
-                payment_proof: document.querySelector('[name="payment_proof"]').value,
-                timestamp: new Date().toLocaleString()
-            };
+            // Get file and convert to base64
+            const fileInput = this.querySelector('[name="payment_proof"]');
+            const file = fileInput.files[0];
             
-            try {
-                const response = await fetch(scriptURL, {
-                    redirect: 'follow',
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'text/plain'
-                    },
-                    body: JSON.stringify(formData)
-                });
-                
-                const result = await response.json();
-                
-                if (result.status === 'success') {
-                    document.getElementById('registrationForm').style.display = 'none';
-                    document.getElementById('successMessage').style.display = 'block';
-                    window.scrollTo(0, 0);
-                } else {
-                    throw new Error(result.message || 'Submission failed');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Error submitting form: ' + error.message);
+            if (!file) {
+                alert('Please select a payment proof image');
                 submitButton.disabled = false;
                 submitButton.innerHTML = '<span>Submit Registration</span><i class="fas fa-arrow-right"></i>';
+                return;
             }
+            
+            // Read file as base64
+            const reader = new FileReader();
+            reader.onload = async function(e) {
+                const base64Data = e.target.result.split(',')[1];
+                
+                // Get form data
+                const formData = {
+                    name: document.querySelector('[name="name"]').value,
+                    school: document.querySelector('[name="school"]').value,
+                    email: document.querySelector('[name="email"]').value,
+                    phone: document.querySelector('[name="phone"]').value,
+                    fileName: file.name,
+                    fileData: base64Data,
+                    mimeType: file.type,
+                    timestamp: new Date().toLocaleString()
+                };
+                
+                try {
+                    const response = await fetch(scriptURL, {
+                        redirect: 'follow',
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'text/plain'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (result.status === 'success') {
+                        document.getElementById('registrationForm').style.display = 'none';
+                        document.getElementById('successMessage').style.display = 'block';
+                        window.scrollTo(0, 0);
+                    } else {
+                        throw new Error(result.message || 'Submission failed');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Error submitting form: ' + error.message);
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = '<span>Submit Registration</span><i class="fas fa-arrow-right"></i>';
+                }
+            };
+            
+            reader.readAsDataURL(file);
         });
     </script>
 </body>
