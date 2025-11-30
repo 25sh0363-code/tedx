@@ -121,9 +121,9 @@
                     </div>
 
                     <div style="margin-bottom: 30px;">
-                        <label style="display: block; color: var(--secondary); font-weight: 600; margin-bottom: 10px; font-size: 1.1rem;">Payment Proof (Screenshot) *</label>
-                        <input type="file" name="payment_proof" accept="image/*" required style="width: 100%; padding: 15px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; color: var(--secondary); font-size: 1rem;">
-                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">Upload a clear screenshot of your payment confirmation</p>
+                        <label style="display: block; color: var(--secondary); font-weight: 600; margin-bottom: 10px; font-size: 1.1rem;">Payment Proof (Google Drive Link) *</label>
+                        <input type="url" name="payment_proof" placeholder="https://drive.google.com/..." required style="width: 100%; padding: 15px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; color: var(--secondary); font-size: 1rem;">
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">Upload your payment screenshot to Google Drive, set sharing to "Anyone with the link", and paste the link here</p>
                     </div>
 
                     <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.1rem; padding: 18px;">
@@ -246,6 +246,7 @@
             const school = this.querySelector('[name="school"]').value;
             const email = this.querySelector('[name="email"]').value;
             const phone = this.querySelector('[name="phone"]').value;
+            const paymentProof = this.querySelector('[name="payment_proof"]').value;
             
             // Create URL encoded data for text fields
             const data = new URLSearchParams();
@@ -253,6 +254,7 @@
             data.append('school', school);
             data.append('email', email);
             data.append('phone', phone);
+            data.append('payment_proof', paymentProof);
             data.append('timestamp', new Date().toLocaleString());
             
             try {
