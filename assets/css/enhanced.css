@@ -476,14 +476,13 @@ body {
     transform: translate(-50%, -50%);
     z-index: 0;
     object-fit: cover;
-    filter: grayscale(100%) blur(1px) brightness(0.7);
-    opacity: 0.6;
+    filter: grayscale(100%);
 }
 
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
     z-index: 1;
 }
 
