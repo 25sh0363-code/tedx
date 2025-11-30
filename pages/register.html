@@ -239,14 +239,13 @@
             submitButton.disabled = true;
             submitButton.innerHTML = '<span>Submitting...</span><i class="fas fa-spinner fa-spin"></i>';
             
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbxnphhfd53JaDG8FJ-vWgrcT6BsxJynW3l0jcCAwOsW1ktUktuWLq1vlr03JQbLGiL9/exec';
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxMnThzd7y0-_iL28ZVAnRia61BgdYuMdv-UkS1nA4byllMMZexRaRMVryNAG4fvCBs/exec';
             
             // Get form data
             const name = this.querySelector('[name="name"]').value;
             const school = this.querySelector('[name="school"]').value;
             const email = this.querySelector('[name="email"]').value;
             const phone = this.querySelector('[name="phone"]').value;
-            const fileInput = this.querySelector('[name="payment_proof"]');
             
             // Create URL encoded data for text fields
             const data = new URLSearchParams();
@@ -259,15 +258,17 @@
             try {
                 const response = await fetch(scriptURL + '?' + data.toString(), {
                     method: 'GET',
-                    redirect: 'follow'
+                    redirect: 'follow',
+                    mode: 'no-cors'
                 });
                 
+                // With no-cors mode, we assume success if no error is thrown
                 document.getElementById('registrationForm').style.display = 'none';
                 document.getElementById('successMessage').style.display = 'block';
                 window.scrollTo(0, 0);
             } catch (error) {
                 console.error('Error:', error);
-                alert('Error submitting form. Please try again.');
+                alert('Error submitting form. Please try again. Error: ' + error.message);
                 submitButton.disabled = false;
                 submitButton.innerHTML = '<span>Submit Registration</span><i class="fas fa-arrow-right"></i>';
             }
