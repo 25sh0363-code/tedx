@@ -121,9 +121,9 @@
                     </div>
 
                     <div style="margin-bottom: 30px;">
-                        <label style="display: block; color: var(--secondary); font-weight: 600; margin-bottom: 10px; font-size: 1.1rem;">Payment Proof (Google Drive Link) *</label>
-                        <input type="url" name="payment_proof" placeholder="https://drive.google.com/..." required style="width: 100%; padding: 15px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; color: var(--secondary); font-size: 1rem;">
-                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">Upload your payment screenshot to Google Drive, set sharing to "Anyone with the link", and paste the link here</p>
+                        <label style="display: block; color: var(--secondary); font-weight: 600; margin-bottom: 10px; font-size: 1.1rem;">Payment Proof (Screenshot) *</label>
+                        <input type="file" name="payment_proof" accept="image/*" required style="width: 100%; padding: 15px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; color: var(--secondary); font-size: 1rem;">
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">Upload a clear screenshot of your payment confirmation (will be saved to Drive)</p>
                     </div>
 
                     <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.1rem; padding: 18px;">
@@ -241,39 +241,57 @@
             
             const scriptURL = 'https://script.google.com/macros/s/AKfycbxMnThzd7y0-_iL28ZVAnRia61BgdYuMdv-UkS1nA4byllMMZexRaRMVryNAG4fvCBs/exec';
             
-            // Get form data
-            const name = this.querySelector('[name="name"]').value;
-            const school = this.querySelector('[name="school"]').value;
-            const email = this.querySelector('[name="email"]').value;
-            const phone = this.querySelector('[name="phone"]').value;
-            const paymentProof = this.querySelector('[name="payment_proof"]').value;
+            // Get file and convert to base64
+            const fileInput = this.querySelector('[name="payment_proof"]');
+            const file = fileInput.files[0];
             
-            // Create URL encoded data for text fields
-            const data = new URLSearchParams();
-            data.append('name', name);
-            data.append('school', school);
-            data.append('email', email);
-            data.append('phone', phone);
-            data.append('payment_proof', paymentProof);
-            data.append('timestamp', new Date().toLocaleString());
-            
-            try {
-                const response = await fetch(scriptURL + '?' + data.toString(), {
-                    method: 'GET',
-                    redirect: 'follow',
-                    mode: 'no-cors'
-                });
-                
-                // With no-cors mode, we assume success if no error is thrown
-                document.getElementById('registrationForm').style.display = 'none';
-                document.getElementById('successMessage').style.display = 'block';
-                window.scrollTo(0, 0);
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Error submitting form. Please try again. Error: ' + error.message);
+            if (!file) {
+                alert('Please select a payment proof image');
                 submitButton.disabled = false;
                 submitButton.innerHTML = '<span>Submit Registration</span><i class="fas fa-arrow-right"></i>';
+                return;
             }
+            
+            // Read file as base64
+            const reader = new FileReader();
+            reader.onload = async function(e) {
+                const base64Data = e.target.result.split(',')[1];
+                
+                // Get form data
+                const formData = {
+                    name: document.querySelector('[name="name"]').value,
+                    school: document.querySelector('[name="school"]').value,
+                    email: document.querySelector('[name="email"]').value,
+                    phone: document.querySelector('[name="phone"]').value,
+                    fileName: file.name,
+                    fileData: base64Data,
+                    mimeType: file.type,
+                    timestamp: new Date().toLocaleString()
+                };
+                
+                try {
+                    const response = await fetch(scriptURL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+                    
+                    // With no-cors mode, we assume success if no error is thrown
+                    document.getElementById('registrationForm').style.display = 'none';
+                    document.getElementById('successMessage').style.display = 'block';
+                    window.scrollTo(0, 0);
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Error submitting form. Please try again.');
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = '<span>Submit Registration</span><i class="fas fa-arrow-right"></i>';
+                }
+            };
+            
+            reader.readAsDataURL(file);
         });
     </script>
 </body>
