@@ -235,28 +235,36 @@
         document.getElementById('registrationForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            const formData = new FormData(this);
             const submitButton = this.querySelector('button[type="submit"]');
             submitButton.disabled = true;
             submitButton.innerHTML = '<span>Submitting...</span><i class="fas fa-spinner fa-spin"></i>';
             
-            // Replace with your Google Apps Script Web App URL
-            const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxnphhfd53JaDG8FJ-vWgrcT6BsxJynW3l0jcCAwOsW1ktUktuWLq1vlr03JQbLGiL9/exec';
+            
+            // Get form data
+            const name = this.querySelector('[name="name"]').value;
+            const school = this.querySelector('[name="school"]').value;
+            const email = this.querySelector('[name="email"]').value;
+            const phone = this.querySelector('[name="phone"]').value;
+            const fileInput = this.querySelector('[name="payment_proof"]');
+            
+            // Create URL encoded data for text fields
+            const data = new URLSearchParams();
+            data.append('name', name);
+            data.append('school', school);
+            data.append('email', email);
+            data.append('phone', phone);
+            data.append('timestamp', new Date().toLocaleString());
             
             try {
-                const response = await fetch(scriptURL, {
-                    method: 'POST',
-                    body: formData
+                const response = await fetch(scriptURL + '?' + data.toString(), {
+                    method: 'GET',
+                    redirect: 'follow'
                 });
                 
-                if (response.ok) {
-                    document.getElementById('registrationForm').style.display = 'none';
-                    document.getElementById('successMessage').style.display = 'block';
-                } else {
-                    alert('Error submitting form. Please try again.');
-                    submitButton.disabled = false;
-                    submitButton.innerHTML = '<span>Submit Registration</span><i class="fas fa-arrow-right"></i>';
-                }
+                document.getElementById('registrationForm').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+                window.scrollTo(0, 0);
             } catch (error) {
                 console.error('Error:', error);
                 alert('Error submitting form. Please try again.');
