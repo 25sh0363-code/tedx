@@ -482,7 +482,7 @@ body {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+    background: rgba(0, 0, 0, 0.85);
     z-index: 1;
 }
 
