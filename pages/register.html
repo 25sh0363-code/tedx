@@ -90,13 +90,13 @@
                 </div>
 
                 <!-- Payment QR Code -->
-                <div class="reveal" style="background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(230, 43, 30, 0.3); border-radius: 20px; padding: 40px; margin-bottom: 50px; text-align: center;">
-                    <h3 style="color: var(--primary); margin-bottom: 20px; font-size: 1.5rem;">Payment Information</h3>
-                    <p style="color: var(--text-light); margin-bottom: 30px;">Scan the QR code below to make payment</p>
-                    <div style="background: white; padding: 20px; border-radius: 15px; display: inline-block; margin-bottom: 20px;">
-                        <img src="../assets/images/payment-qr.jpeg" alt="Payment QR Code" style="width: 250px; height: 250px; display: block;">
+                <div class="reveal payment-qr-section" style="background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(230, 43, 30, 0.3); border-radius: 20px; padding: 40px; margin-bottom: 50px; text-align: center;">
+                    <h3 style="color: var(--primary); margin-bottom: 20px; font-size: clamp(1.2rem, 4vw, 1.5rem);">Payment Information</h3>
+                    <p style="color: var(--text-light); margin-bottom: 30px; font-size: clamp(0.9rem, 3vw, 1rem);">Scan the QR code below to make payment</p>
+                    <div class="qr-code-wrapper" style="background: white; padding: 20px; border-radius: 15px; display: inline-block; margin-bottom: 20px; max-width: 100%;">
+                        <img src="../assets/images/payment-qr.jpeg" alt="Payment QR Code" class="qr-code-image" style="width: 100%; max-width: 250px; height: auto; display: block;">
                     </div>
-                    <p style="color: var(--text-light); font-size: 0.95rem;"><strong>Note:</strong> Upload payment proof after completing the transaction</p>
+                    <p style="color: var(--text-light); font-size: clamp(0.85rem, 2.5vw, 0.95rem);"><strong>Note:</strong> Upload payment proof after completing the transaction</p>
                 </div>
 
                 <!-- Registration Form -->
@@ -300,5 +300,37 @@
             reader.readAsDataURL(file);
         });
     </script>
+
+    <style>
+        /* Mobile optimization for QR code */
+        @media (max-width: 768px) {
+            .payment-qr-section {
+                padding: 25px 15px !important;
+            }
+            
+            .qr-code-wrapper {
+                padding: 15px !important;
+            }
+            
+            .qr-code-image {
+                max-width: 200px !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .payment-qr-section {
+                padding: 20px 10px !important;
+                margin-bottom: 30px !important;
+            }
+            
+            .qr-code-wrapper {
+                padding: 10px !important;
+            }
+            
+            .qr-code-image {
+                max-width: 180px !important;
+            }
+        }
+    </style>
 </body>
 </html>
