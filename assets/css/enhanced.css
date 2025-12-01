@@ -65,6 +65,13 @@ body {
     background: radial-gradient(ellipse at top, rgba(230, 43, 30, 0.03), transparent 50%),
                 radial-gradient(ellipse at bottom, rgba(230, 43, 30, 0.05), transparent 70%),
                 linear-gradient(180deg, var(--bg-darker), var(--bg-dark));
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+}
+
+/* Show animated background after preloader is hidden */
+body:not(:has(#preloader:not(.hidden))) .animated-bg {
+    opacity: 1;
 }
 
 .glow-orb {
@@ -139,11 +146,6 @@ body {
     align-items: center;
     justify-content: center;
     transition: opacity 0.3s var(--ease-out), visibility 0.3s;
-}
-
-/* Hide background glow during preloader */
-#preloader:not(.hidden) ~ .animated-bg .glow-orb {
-    display: none;
 }
 
 #preloader.hidden {
