@@ -233,11 +233,15 @@ body {
     font-family: 'Playfair Display', serif;
     margin-bottom: 25px;
     color: var(--secondary);
+    text-shadow: none !important;
+    filter: none !important;
 }
 
 .maya-word {
     display: inline-block;
     animation: pulse 1.2s ease-in-out infinite;
+    text-shadow: none !important;
+    filter: none !important;
 }
 
 @keyframes pulse {
