@@ -7,6 +7,7 @@
     // ============================================
     const preloader = document.getElementById('preloader');
     const animatedBg = document.querySelector('.animated-bg');
+    const scheduleButton = document.getElementById('scheduleButton');
     const isMobile = window.innerWidth <= 768;
     
     // Hide animated background during preloader
@@ -23,6 +24,10 @@
                     // Show animated background after preloader is gone
                     if (animatedBg) {
                         animatedBg.style.opacity = '1';
+                    }
+                    // Show schedule button after preloader is gone
+                    if (scheduleButton) {
+                        scheduleButton.style.display = 'block';
                     }
                 }, 400);
             }
