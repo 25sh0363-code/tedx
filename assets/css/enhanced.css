@@ -134,12 +134,18 @@ body {
 #preloader {
     position: fixed;
     inset: 0;
-    background: linear-gradient(135deg, var(--bg-darker), var(--bg-dark));
+    background: #000000;
     z-index: 10000;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: opacity 0.3s var(--ease-out), visibility 0.3s;
+}
+
+#preloader * {
+    text-shadow: none !important;
+    box-shadow: none !important;
+    filter: none !important;
 }
 
 #preloader.hidden {
