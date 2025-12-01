@@ -6,7 +6,13 @@
     // PRELOADER
     // ============================================
     const preloader = document.getElementById('preloader');
+    const animatedBg = document.querySelector('.animated-bg');
     const isMobile = window.innerWidth <= 768;
+    
+    // Hide animated background during preloader
+    if (animatedBg) {
+        animatedBg.style.opacity = '0';
+    }
     
     window.addEventListener('load', () => {
         setTimeout(() => {
@@ -14,6 +20,10 @@
                 preloader.classList.add('hidden');
                 setTimeout(() => {
                     preloader.style.display = 'none';
+                    // Show animated background after preloader is gone
+                    if (animatedBg) {
+                        animatedBg.style.opacity = '1';
+                    }
                 }, 400);
             }
         }, isMobile ? 800 : 1500);
