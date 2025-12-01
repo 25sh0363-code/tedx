@@ -239,6 +239,101 @@
         </div>
     </footer>
 
+    <!-- Schedule Info Button -->
+    <div id="scheduleButton" style="position: fixed; bottom: 30px; right: 30px; z-index: 1000; cursor: pointer;">
+        <div style="background: linear-gradient(135deg, #25D366, #128C7E); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); transition: all 0.3s ease; animation: pulse 2s infinite;">
+            <i class="fas fa-calendar-alt" style="color: white; font-size: 28px;"></i>
+        </div>
+    </div>
+
+    <!-- Schedule Message Popup -->
+    <div id="scheduleMessage" style="position: fixed; bottom: 100px; right: 30px; background: white; padding: 20px 25px; border-radius: 15px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); z-index: 1001; display: none; max-width: 280px; animation: slideIn 0.3s ease;">
+        <div style="position: relative;">
+            <button id="closeMessage" style="position: absolute; top: -10px; right: -10px; background: #e62b1e; color: white; border: none; width: 24px; height: 24px; border-radius: 50%; cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center;">×</button>
+            <p style="color: #333; font-size: 15px; margin: 0; line-height: 1.5; font-weight: 500;">
+                <i class="fas fa-info-circle" style="color: #e62b1e; margin-right: 8px;"></i>
+                Schedule will be announced soon!
+            </p>
+        </div>
+    </div>
+
+    <style>
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #scheduleButton:hover > div {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            #scheduleButton {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            #scheduleButton > div {
+                width: 55px;
+                height: 55px;
+            }
+
+            #scheduleButton i {
+                font-size: 24px !important;
+            }
+
+            #scheduleMessage {
+                bottom: 85px;
+                right: 20px;
+                max-width: 250px;
+            }
+        }
+    </style>
+
+    <script>
+        // Schedule button functionality
+        const scheduleButton = document.getElementById('scheduleButton');
+        const scheduleMessage = document.getElementById('scheduleMessage');
+        const closeMessage = document.getElementById('closeMessage');
+
+        scheduleButton.addEventListener('click', function() {
+            scheduleMessage.style.display = 'block';
+            setTimeout(() => {
+                scheduleMessage.style.display = 'none';
+            }, 5000);
+        });
+
+        closeMessage.addEventListener('click', function(e) {
+            e.stopPropagation();
+            scheduleMessage.style.display = 'none';
+        });
+
+        // Close message when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!scheduleButton.contains(e.target) && !scheduleMessage.contains(e.target)) {
+                scheduleMessage.style.display = 'none';
+            }
+        });
+    </script>
+
     <script src="assets/js/enhanced.js"></script>
 </body>
 </html>
