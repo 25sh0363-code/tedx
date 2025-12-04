@@ -1566,4 +1566,37 @@ body {
     .speaker-card > div:last-child {
         order: 2;
     }
+    
+    /* Team page mobile optimization */
+    .team-photo-wrapper {
+        margin-bottom: 50px !important;
+        padding: 0 10px !important;
+    }
+    
+    .team-photo-wrapper > div {
+        border-radius: 15px !important;
+        box-shadow: 0 10px 40px rgba(230, 43, 30, 0.2) !important;
+    }
+    
+    .team-intro-box {
+        padding: 25px 20px !important;
+    }
+    
+    .team-intro-box p {
+        font-size: 1rem !important;
+    }
+    
+    /* Register page mobile improvements */
+    .payment-qr-section {
+        padding: 25px 15px !important;
+    }
+    
+    /* Ensure all forms are mobile friendly */
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="file"],
+    textarea {
+        font-size: 16px !important; /* Prevents zoom on iOS */
+    }
 }
