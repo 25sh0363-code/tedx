@@ -1136,9 +1136,13 @@ body {
    TEAM MEMBER CARDS
    ============================================ */
 .team-member-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(230, 43, 30, 0.5) !important;
-    box-shadow: 0 15px 40px rgba(230, 43, 30, 0.3);
+    transform: translateY(-10px) scale(1.02);
+    border-color: rgba(230, 43, 30, 0.6) !important;
+    box-shadow: 0 20px 60px rgba(230, 43, 30, 0.4), 0 0 0 1px rgba(230, 43, 30, 0.3);
+}
+
+.team-member-card:hover img {
+    transform: scale(1.1);
 }
 
 /* ============================================
@@ -1577,8 +1581,30 @@ body {
     }
     
     /* Team page mobile optimization */
+    .team-grid {
+        grid-template-columns: 1fr !important;
+        gap: 25px !important;
+    }
+    
     .team-member-card {
+        margin: 0 auto;
+        max-width: 500px;
+    }
+    
+    .team-member-card > div:first-child {
+        height: 400px !important;
+    }
+    
+    .team-member-card > div:last-child {
         padding: 25px 20px !important;
+    }
+    
+    .team-member-card h3 {
+        font-size: 1.3rem !important;
+    }
+    
+    .team-member-card p {
+        font-size: 0.9rem !important;
     }
     
     /* Register page mobile improvements */
