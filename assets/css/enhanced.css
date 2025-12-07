@@ -1133,6 +1133,15 @@ body {
 }
 
 /* ============================================
+   TEAM MEMBER CARDS
+   ============================================ */
+.team-member-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(230, 43, 30, 0.5) !important;
+    box-shadow: 0 15px 40px rgba(230, 43, 30, 0.3);
+}
+
+/* ============================================
    REVEAL ANIMATIONS
    ============================================ */
 .reveal {
@@ -1568,22 +1577,8 @@ body {
     }
     
     /* Team page mobile optimization */
-    .team-photo-wrapper {
-        margin-bottom: 50px !important;
-        padding: 0 10px !important;
-    }
-    
-    .team-photo-wrapper > div {
-        border-radius: 15px !important;
-        box-shadow: 0 10px 40px rgba(230, 43, 30, 0.2) !important;
-    }
-    
-    .team-intro-box {
+    .team-member-card {
         padding: 25px 20px !important;
-    }
-    
-    .team-intro-box p {
-        font-size: 1rem !important;
     }
     
     /* Register page mobile improvements */
