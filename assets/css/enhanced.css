@@ -1581,30 +1581,26 @@ body {
     }
     
     /* Team page mobile optimization */
-    .team-grid {
+    .team-member-card {
         grid-template-columns: 1fr !important;
         gap: 25px !important;
-    }
-    
-    .team-member-card {
-        margin: 0 auto;
-        max-width: 500px;
+        margin-bottom: 50px !important;
     }
     
     .team-member-card > div:first-child {
-        height: 400px !important;
+        order: 1 !important;
     }
     
     .team-member-card > div:last-child {
-        padding: 25px 20px !important;
+        order: 2 !important;
     }
     
     .team-member-card h3 {
-        font-size: 1.3rem !important;
+        font-size: 1.5rem !important;
     }
     
     .team-member-card p {
-        font-size: 0.9rem !important;
+        font-size: 0.95rem !important;
     }
     
     /* Register page mobile improvements */
