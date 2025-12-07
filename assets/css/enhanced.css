@@ -1583,8 +1583,9 @@ body {
     /* Team page mobile optimization */
     .team-member-card {
         grid-template-columns: 1fr !important;
-        gap: 25px !important;
-        margin-bottom: 50px !important;
+        gap: 30px !important;
+        margin-bottom: 60px !important;
+        padding: 30px 20px !important;
     }
     
     .team-member-card > div:first-child {
@@ -1595,12 +1596,17 @@ body {
         order: 2 !important;
     }
     
-    .team-member-card h3 {
-        font-size: 1.5rem !important;
+    .team-member-card img {
+        height: 380px !important;
     }
     
-    .team-member-card p {
-        font-size: 0.95rem !important;
+    .team-member-card h3 {
+        font-size: clamp(1.8rem, 7vw, 2.5rem) !important;
+    }
+    
+    .team-member-card span {
+        font-size: 0.75rem !important;
+        letter-spacing: 2px !important;
     }
     
     /* Register page mobile improvements */
