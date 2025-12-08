@@ -281,14 +281,21 @@
                 };
                 
                 try {
+                    // Set a timeout for the fetch request
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
+                    
                     const response = await fetch(scriptURL, {
                         redirect: 'follow',
                         method: 'POST',
                         headers: {
                             'Content-Type': 'text/plain'
                         },
-                        body: JSON.stringify(formData)
+                        body: JSON.stringify(formData),
+                        signal: controller.signal
                     });
+                    
+                    clearTimeout(timeoutId);
                     
                     const result = await response.json();
                     
@@ -301,7 +308,11 @@
                     }
                 } catch (error) {
                     console.error('Error:', error);
-                    alert('Error submitting form: ' + error.message);
+                    if (error.name === 'AbortError') {
+                        alert('Request timed out. Please check your internet connection and try again.');
+                    } else {
+                        alert('Error submitting form: ' + error.message + '\n\nPlease contact the team if this issue persists.');
+                    }
                     submitButton.disabled = false;
                     submitButton.innerHTML = '<span>Submit Registration</span><i class="fas fa-arrow-right"></i>';
                 }
