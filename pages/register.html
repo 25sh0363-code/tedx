@@ -73,8 +73,8 @@
                     <span class="title-line">Join the</span>
                     <span class="title-line highlight">Experience</span>
                 </h1>
-                <p class="hero-subtitle reveal">
-                    Registration are now open!!!
+                <p class="hero-subtitle reveal" style="color: var(--primary); font-weight: 600;">
+                    Registrations are now closed
                 </p>
             </div>
         </div>
@@ -86,13 +86,13 @@
             <div style="max-width: 900px; margin: 0 auto;">                                                                                                                                              
                 <div class="section-header reveal" style="text-align: center; margin-bottom: 50px;">
                     <span class="section-tag">Event Registration</span>
-                    <h2 class="section-title">Register for TEDx Silver Oaks 2025</h2>
-                    <p class="section-subtitle">Secure your spot at this year's event</p>
-                    <p style="color: var(--primary); font-size: 1.1rem; font-weight: 600; margin-top: 15px;">⚠️ Registrations only available for ages 14+</p>
+                    <h2 class="section-title">TEDx Silver Oaks 2025</h2>
+                    <p class="section-subtitle" style="color: var(--primary); font-size: 1.2rem; font-weight: 600;">Registrations are now closed</p>
+                    <p style="color: var(--text-light); font-size: 1rem; margin-top: 15px;">Thank you for your interest. We have reached our capacity for this event.</p>
                 </div>
 
                 <!-- Payment QR Code -->
-                <div class="reveal payment-qr-section" style="background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(230, 43, 30, 0.3); border-radius: 20px; padding: 40px; margin-bottom: 50px; text-align: center;">
+                <div class="reveal payment-qr-section" style="display: none; background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(230, 43, 30, 0.3); border-radius: 20px; padding: 40px; margin-bottom: 50px; text-align: center;">
                     <h3 style="color: var(--primary); margin-bottom: 20px; font-size: clamp(1.2rem, 4vw, 1.5rem);">Payment Information</h3>
                     
                     <div style="background: rgba(230, 43, 30, 0.1); border: 2px solid var(--primary); border-radius: 12px; padding: 20px; margin-bottom: 25px;">
@@ -114,7 +114,7 @@
                 </div>
 
                 <!-- Registration Form -->
-                <form id="registrationForm" class="reveal" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(230, 43, 30, 0.2); border-radius: 20px; padding: 40px;">
+                <form id="registrationForm" class="reveal" style="display: none; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(230, 43, 30, 0.2); border-radius: 20px; padding: 40px;">
                     <div style="margin-bottom: 25px;">
                         <label style="display: block; color: var(--secondary); font-weight: 600; margin-bottom: 10px; font-size: 1.1rem;">Full Name *</label>
                         <input type="text" name="name" required style="width: 100%; padding: 15px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; color: var(--secondary); font-size: 1rem;">
@@ -146,6 +146,14 @@
                         <i class="fas fa-arrow-right"></i>
                     </button>
                 </form>
+
+                <!-- Registrations Closed Message -->
+                <div style="background: rgba(230, 43, 30, 0.1); border: 2px solid rgba(230, 43, 30, 0.5); border-radius: 15px; padding: 40px; margin-bottom: 30px; text-align: center;">
+                    <i class="fas fa-times-circle" style="font-size: 48px; color: var(--primary); margin-bottom: 15px;"></i>
+                    <h3 style="color: var(--primary); margin-bottom: 15px; font-size: 1.5rem;">Registrations Closed</h3>
+                    <p style="color: var(--text-light); font-size: 1.1rem; margin-bottom: 20px;">We've reached full capacity for TEDx Silver Oaks 2025.</p>
+                    <p style="color: var(--text-light); font-size: 1rem;">Follow us on <a href="https://www.instagram.com/tedxsilveroaks/" target="_blank" style="color: var(--primary); text-decoration: underline;">Instagram</a> for updates on future events!</p>
+                </div>
 
                 <div id="successMessage" style="display: none; background: rgba(76, 175, 80, 0.1); border: 2px solid rgba(76, 175, 80, 0.5); border-radius: 15px; padding: 30px; margin-top: 30px; text-align: center;">
                     <i class="fas fa-check-circle" style="font-size: 48px; color: #4CAF50; margin-bottom: 15px;"></i>
