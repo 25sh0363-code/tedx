@@ -234,17 +234,139 @@
     </div>
 
     <!-- Schedule Message Popup -->
-    <div id="scheduleMessage" style="position: fixed; bottom: 100px; right: 30px; background: white; padding: 20px 25px; border-radius: 15px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); z-index: 1001; display: none; max-width: 280px; animation: slideIn 0.3s ease;">
-        <div style="position: relative;">
-            <button id="closeMessage" style="position: absolute; top: -10px; right: -10px; background: #e62b1e; color: white; border: none; width: 24px; height: 24px; border-radius: 50%; cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center;">×</button>
-            <p style="color: #333; font-size: 15px; margin: 0; line-height: 1.6; font-weight: 500;">
-                <i class="fas fa-calendar-check" style="color: #e62b1e; margin-right: 8px;"></i>
-                <strong>20th December 2025</strong><br>
-                <span style="font-size: 14px;">9:30 AM - 2:30 PM</span><br>
-                <a href="https://maps.app.goo.gl/sV7Q4JmoEUMAU5J1A" target="_blank" style="color: #e62b1e; text-decoration: none; font-size: 14px;">📍 Silver Oaks International School</a>
+    <div id="scheduleMessage" style="position: fixed; bottom: 100px; right: 30px; background: white; padding: 0; border-radius: 15px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); z-index: 1001; display: none; max-width: 400px; max-height: 600px; overflow-y: auto; animation: slideIn 0.3s ease;">
+        <div style="position: sticky; top: 0; background: linear-gradient(135deg, #e62b1e 0%, #b82318 100%); color: white; padding: 20px 25px; border-radius: 15px 15px 0 0; z-index: 1;">
+            <button id="closeMessage" style="position: absolute; top: 15px; right: 15px; background: rgba(255, 255, 255, 0.2); color: white; border: none; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; transition: all 0.3s;">×</button>
+            <h3 style="margin: 0 0 10px 0; font-size: 22px; font-weight: 700;">Event Schedule</h3>
+            <p style="margin: 0; font-size: 14px; opacity: 0.95;">
+                <i class="fas fa-calendar-check"></i> 20th December 2025<br>
+                <i class="fas fa-map-marker-alt"></i> <a href="https://maps.app.goo.gl/sV7Q4JmoEUMAU5J1A" target="_blank" style="color: white; text-decoration: underline;">Silver Oaks International School</a>
             </p>
         </div>
+        <div style="padding: 20px 25px;">
+            <!-- Speakers Section -->
+            <div style="margin-bottom: 20px;">
+                <h4 style="color: #e62b1e; font-size: 16px; font-weight: 700; margin-bottom: 15px; display: flex; align-items: center;">
+                    <i class="fas fa-microphone" style="margin-right: 8px;"></i> SPEAKERS
+                </h4>
+                <div class="schedule-item">
+                    <div class="time-slot">9:00 - 9:30</div>
+                    <div class="event-name">Registrations</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time-slot">9:30 - 10:00</div>
+                    <div class="event-name">Opening Ceremony</div>
+                </div>
+                <div class="schedule-item speaker">
+                    <div class="time-slot">10:00 - 10:20</div>
+                    <div class="event-name">Uma Sudhir <i class="fas fa-microphone" style="color: #e62b1e; font-size: 12px;"></i></div>
+                </div>
+                <div class="schedule-item speaker">
+                    <div class="time-slot">10:20 - 10:40</div>
+                    <div class="event-name">Anuj Joshi <i class="fas fa-microphone" style="color: #e62b1e; font-size: 12px;"></i></div>
+                </div>
+                <div class="schedule-item speaker">
+                    <div class="time-slot">10:40 - 11:00</div>
+                    <div class="event-name">Tanvi Jalnapurkar <i class="fas fa-microphone" style="color: #e62b1e; font-size: 12px;"></i></div>
+                </div>
+                <div class="schedule-item special">
+                    <div class="time-slot">11:00 - 11:30</div>
+                    <div class="event-name">Illusionist Magic with Munu</div>
+                </div>
+                <div class="schedule-item speaker">
+                    <div class="time-slot">11:30 - 11:50</div>
+                    <div class="event-name">Dr. Virinchi Sharma <i class="fas fa-microphone" style="color: #e62b1e; font-size: 12px;"></i></div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time-slot">11:50 - 12:40</div>
+                    <div class="event-name">Lunch</div>
+                </div>
+                <div class="schedule-item speaker">
+                    <div class="time-slot">12:40 - 13:00</div>
+                    <div class="event-name">Yuvrajaago <i class="fas fa-microphone" style="color: #e62b1e; font-size: 12px;"></i></div>
+                </div>
+            </div>
+            
+            <!-- Itinerary Section -->
+            <div style="padding-top: 20px; border-top: 2px solid #f0f0f0;">
+                <h4 style="color: #e62b1e; font-size: 16px; font-weight: 700; margin-bottom: 15px; display: flex; align-items: center;">
+                    <i class="fas fa-list-check" style="margin-right: 8px;"></i> ITINERARY
+                </h4>
+                <div class="schedule-item">
+                    <div class="time-slot">13:00 - 13:30</div>
+                    <div class="event-name">Workshop</div>
+                </div>
+                <div class="schedule-item speaker">
+                    <div class="time-slot">13:30 - 13:50</div>
+                    <div class="event-name">Abhinav Krishna <i class="fas fa-microphone" style="color: #e62b1e; font-size: 12px;"></i></div>
+                </div>
+                <div class="schedule-item speaker">
+                    <div class="time-slot">13:50 - 14:10</div>
+                    <div class="event-name">Dr. Mudrika Khandelwal <i class="fas fa-microphone" style="color: #e62b1e; font-size: 12px;"></i></div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time-slot">14:20 - 15:00</div>
+                    <div class="event-name">Closing Ceremony</div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <style>
+        .schedule-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+        
+        .time-slot {
+            min-width: 110px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #666;
+        }
+        
+        .event-name {
+            font-size: 14px;
+            color: #333;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        
+        .schedule-item.speaker .event-name {
+            color: #e62b1e;
+            font-weight: 600;
+        }
+        
+        .schedule-item.special .event-name {
+            color: #128C7E;
+            font-weight: 600;
+        }
+        
+        #scheduleMessage::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        #scheduleMessage::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        #scheduleMessage::-webkit-scrollbar-thumb {
+            background: #e62b1e;
+            border-radius: 10px;
+        }
+        
+        #closeMessage:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+    </style>
 
     <style>
         @keyframes pulse {
