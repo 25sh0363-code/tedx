@@ -739,6 +739,173 @@ body {
 }
 
 /* ============================================
+   PAGE HEADER
+   ============================================ */
+.page-header {
+    padding: 180px 0 100px;
+    text-align: center;
+    background: linear-gradient(180deg, rgba(230, 43, 30, 0.05), transparent);
+}
+
+.page-header-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.page-tag {
+    display: inline-block;
+    background: rgba(230, 43, 30, 0.1);
+    color: var(--primary);
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(230, 43, 30, 0.2);
+}
+
+.page-title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900;
+    margin-bottom: 25px;
+    font-family: 'Playfair Display', serif;
+    line-height: 1.2;
+}
+
+.page-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.8;
+}
+
+.page-subtitle a {
+    color: var(--primary);
+    text-decoration: underline;
+    transition: opacity 0.3s ease;
+}
+
+.page-subtitle a:hover {
+    opacity: 0.8;
+}
+
+/* ============================================
+   SCHEDULE SECTION
+   ============================================ */
+.schedule-section {
+    padding: 100px 0 120px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.schedule-timeline {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.schedule-timeline::before {
+    content: '';
+    position: absolute;
+    left: 140px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, 
+        transparent,
+        rgba(230, 43, 30, 0.3) 10%,
+        rgba(230, 43, 30, 0.3) 90%,
+        transparent);
+}
+
+.schedule-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 25px 0;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.schedule-item::before {
+    content: '';
+    position: absolute;
+    left: 135px;
+    top: 35px;
+    width: 12px;
+    height: 12px;
+    background: rgba(230, 43, 30, 0.3);
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.schedule-item:hover::before {
+    transform: scale(1.5);
+    box-shadow: 0 0 20px rgba(230, 43, 30, 0.6);
+}
+
+.schedule-time {
+    min-width: 120px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    padding-top: 5px;
+}
+
+.schedule-content {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 20px 25px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.schedule-item:hover .schedule-content {
+    background: rgba(230, 43, 30, 0.05);
+    border-color: rgba(230, 43, 30, 0.2);
+    transform: translateX(5px);
+}
+
+.schedule-content h4 {
+    font-size: 1.1rem;
+    color: var(--secondary);
+    margin: 0 0 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.schedule-content h4 i {
+    color: var(--primary);
+    font-size: 0.9rem;
+}
+
+.schedule-content p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+}
+
+.schedule-item.speaker-session .schedule-content {
+    border-left: 3px solid var(--primary);
+}
+
+.schedule-item.speaker-session .schedule-content h4 {
+    color: var(--primary);
+}
+
+.schedule-item.special-session .schedule-content {
+    border-left: 3px solid #128C7E;
+}
+
+.schedule-item.special-session .schedule-content h4 {
+    color: #25D366;
+}
+
+/* ============================================
    THEME SECTION
    ============================================ */
 .theme-section {
@@ -1349,6 +1516,57 @@ body {
     
     .stat-label {
         font-size: 13px;
+    }
+    
+    .page-header {
+        padding: 140px 0 80px;
+    }
+    
+    .page-tag {
+        font-size: 11px;
+        padding: 8px 20px;
+    }
+    
+    .page-title {
+        font-size: clamp(2rem, 8vw, 3rem);
+        margin-bottom: 20px;
+    }
+    
+    .page-subtitle {
+        font-size: 1rem;
+        padding: 0 20px;
+    }
+    
+    .schedule-section {
+        padding: 60px 0 80px;
+    }
+    
+    .schedule-timeline::before {
+        left: 15px;
+    }
+    
+    .schedule-item {
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px 0 20px 35px;
+    }
+    
+    .schedule-item::before {
+        left: 10px;
+        top: 25px;
+    }
+    
+    .schedule-time {
+        min-width: 100%;
+        font-size: 0.85rem;
+    }
+    
+    .schedule-content {
+        padding: 15px 20px;
+    }
+    
+    .schedule-content h4 {
+        font-size: 1rem;
     }
     
     .theme-section {
